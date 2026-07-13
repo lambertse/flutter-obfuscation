@@ -1,0 +1,38 @@
+assets/*
+
+# Test/analysis scratchwork (not part of the packer deliverable)
+scratch/
+
+# Build outputs
+build/
+build-native/
+*.apk
+*.aab
+packer/native/libguard/build*/
+cmake-build-*/
+
+# Generated at build time by tools/encrypt_snapshot.py -- never checked in,
+# see packer/README.md repo layout and packer/native/libguard/CMakeLists.txt
+packer/native/libguard/src/regions.h
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets / signing material -- never commit real keystores or derived keys
+*.jks
+*.keystore
+*.p12
+*.pem
+*.der
+devkey.hex
+*.env
+.env
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

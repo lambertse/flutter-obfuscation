@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node *)",
+      "Bash(find /tmp/claude-1000/-workspace/bfec6d4d-50b2-45f2-acaf-415bc209b3eb/scratchpad/toolchain/buildtools -iname d8* -o -iname *d8.jar)",
+      "Bash(curl -sL --max-time 120 -o platform-34.zip \"https://dl.google.com/android/repository/platform-34-ext7_r03.zip\")",
+      "Bash(/tmp/claude-1000/-workspace/bfec6d4d-50b2-45f2-acaf-415bc209b3eb/scratchpad/toolchain/python/bin/python3 /workspace/packer/tools/axml_patch.py --input /workspace/scratch/extracted/AndroidManifest.xml --output patched_manifest.xml --element application --attr name --value dev.packer.guard.GuardApplication)",
+      "Bash(echo \"exit: $?\")",
+      "Bash($PY *)",
+      "Bash(echo \"--- diff exit: $? \\(0 = only expected line differs\\) ---\")",
+      "Bash(chmod +x /workspace/packer/apk-inject/build.sh /workspace/packer/tools/pack_existing_apk.sh /workspace/packer/tools/axml_patch.py)"
+    ]
+  }
+}
