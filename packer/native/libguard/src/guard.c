@@ -55,6 +55,15 @@ __attribute__((constructor)) static void guard_ctor(void) {
   guard_trampoline_init_hooks((guard_dlopen_fn)real_dlopen,
                                real_dlopen_ext ? (guard_dlopen_ext_fn)real_dlopen_ext : NULL);
 
+  /* No-Java / DT_NEEDED injection path: when the packer baked the key into
+   * regions.h (--embed-key), set it here, in the constructor, so it is ready
+   * before the engine's dlopen("libapp.so") fires -- there is no GuardBridge
+   * to call nativeSetKey() on this path. No-op on the Java/Application path
+   * (nativeSetKey supplies the key instead). Setting the key before the hook
+   * can fire also closes the hooked-but-no-key-yet window that exists on the
+   * Java path. */
+  guard_trampoline_apply_embedded_key();
+
   guard_anti_instr_check(); /* v1 stub, see anti_instr.h */
 }
 

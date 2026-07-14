@@ -39,12 +39,27 @@ void guard_trampoline_set_key(const uint8_t key[GUARD_AES_KEY_LEN]) {
   g_key_set = 1;
 }
 
+int guard_trampoline_apply_embedded_key(void) {
+#if GUARD_HAVE_EMBEDDED_KEY
+  /* k_embedded_key is defined by the generated regions.h (--embed-key). */
+  guard_trampoline_set_key(k_embedded_key);
+  GUARD_LOGI("guard_trampoline_apply_embedded_key: embedded key installed (no-Java/DT_NEEDED path)");
+  return 1;
+#else
+  return 0;
+#endif
+}
+
 /*
- * Decrypts one region in place. Returns 0 on success. On any failure
- * (missing symbol aside -- that's non-fatal, see below) returns -1 and the
- * caller aborts the process: v1 has no safe partial-failure recovery path.
- * A half-decrypted or still-encrypted-but-marked-executable region is worse
- * than a clean crash -- see README "W^X fallback (v1 vs v2)".
+ * Decrypts one non-exec (data) region in place. Returns 0 on success. On
+ * any failure (missing symbol aside -- that's non-fatal, see below) returns
+ * -1 and the caller aborts the process: there is no safe partial-failure
+ * recovery path here. A half-decrypted region is worse than a clean crash.
+ *
+ * Only ever called for regions with exec == false. A plain RW->R transition
+ * never touches SELinux's execmod check (that check is specifically about
+ * marking a *modified file-backed* page executable), so the simple in-place
+ * approach is safe here -- unlike exec regions, see decrypt_exec_regions().
  */
 static int decrypt_region(void *handle, const guard_region_t *region) {
   void *addr = dlsym(handle, region->symbol);
@@ -64,35 +79,132 @@ static int decrypt_region(void *handle, const guard_region_t *region) {
   const size_t len = (size_t)(pg_end - pg);
 
   if (mprotect((void *)pg, len, PROT_READ | PROT_WRITE) != 0) {
-    /* This is the W^X / SELinux execmod failure mode from §9.1. v1 does not
-     * implement the anon-exec-mapping + engine-blob-mode fallback described
-     * there (it requires replacing the app's FlutterActivity/engine
-     * embedding to accept raw snapshot pointers, which is a separate,
-     * unverified engineering effort -- see README "Known limitations (v1)").
-     * Fail loudly instead of silently leaving ciphertext mapped executable. */
-    GUARD_LOGE(
-        "decrypt_region: mprotect(RW) failed for '%s' at %p (errno=%d) -- "
-        "W^X fallback not implemented in v1, see README",
-        region->symbol, addr, errno);
+    GUARD_LOGE("decrypt_region: mprotect(RW) failed for '%s' at %p (errno=%d)", region->symbol, addr, errno);
     return -1;
   }
 
   guard_aes_ctr_xcrypt(g_key, region->nonce, (uint8_t *)addr, region->size);
 
-  const int target_prot = region->exec ? (PROT_READ | PROT_EXEC) : PROT_READ;
-  if (mprotect((void *)pg, len, target_prot) != 0) {
+  if (mprotect((void *)pg, len, PROT_READ) != 0) {
     GUARD_LOGE(
-        "decrypt_region: mprotect(%s) failed for '%s' after decrypt "
+        "decrypt_region: mprotect(R) failed for '%s' after decrypt "
         "(errno=%d) -- plaintext left RW, aborting",
-        region->exec ? "RX" : "R", region->symbol, errno);
+        region->symbol, errno);
     return -1;
   }
 
-  if (region->exec) {
-    __builtin___clear_cache((char *)pg, (char *)(pg + len)); /* mandatory on ARM64, see §9.2 */
+  GUARD_LOGI("decrypt_region: decrypted '%s' (%zu bytes) at %p", region->symbol, region->size, addr);
+  return 0;
+}
+
+/*
+ * Exec-region decrypt path. Unlike decrypt_region() above, this cannot
+ * decrypt in place. On real, unmodified, enforcing-SELinux Android devices
+ * (confirmed via an actual device log, not just theory), mprotect(...,
+ * PROT_READ|PROT_EXEC) on a page that was just written to via a
+ * *file-backed* mapping (libapp.so, mapped straight out of base.apk) is
+ * denied by the kernel's SELinux execmod check:
+ *   avc: denied { execmod } ... path="...base.apk" tclass=file permissive=0
+ * This is not a corner case -- it is standard W^X policy on every stock,
+ * non-rooted device from roughly Android 10 onward, and fires 100% of the
+ * time for exec regions.
+ *
+ * The fix: never mark a *modified file-backed* page executable at all.
+ * Decrypt into a scratch buffer, then swap the live mapping for a fresh
+ * *anonymous* one at the SAME virtual address (MAP_FIXED) before making it
+ * executable. Anonymous memory was never file-backed, so execmod does not
+ * apply to it -- only execmem does, which is a normal, always-granted
+ * permission for untrusted_app (it's exactly how JIT engines get
+ * executable pages on Android). Keeping the SAME address (rather than
+ * relocating to a new one, which would need every caller redirected via a
+ * dlsym hook, and would bet on undocumented Dart AOT position-independence
+ * assumptions) means every PC-relative reference *inside* the decrypted
+ * instructions, and every address already cached by dlsym() elsewhere,
+ * stays correct with no additional bookkeeping.
+ *
+ * Operates on the union of ALL exec regions' pages in one pass (not one
+ * mprotect per region): on the actual binary this ships against, the two
+ * instruction regions sit ~32 bytes apart on the same page, so per-region
+ * MAP_FIXED replacement would race/clobber across regions. Copying the
+ * whole span through a staging buffer first (ciphertext and any unrelated
+ * bytes alike), decrypting only the known sub-ranges within that staging
+ * copy, then swapping the whole span at once keeps every byte outside our
+ * regions bit-identical to the original.
+ */
+static int decrypt_exec_regions(void *handle, const guard_region_t *regions, size_t count) {
+  const size_t pagesize = (size_t)sysconf(_SC_PAGESIZE);
+
+  uintptr_t span_start = 0;
+  uintptr_t span_end = 0;
+  size_t found = 0;
+
+  /* Pass 1: resolve addresses, compute the covering page-aligned span. */
+  for (size_t i = 0; i < count; i++) {
+    if (!regions[i].exec) continue;
+    void *addr = dlsym(handle, regions[i].symbol);
+    if (!addr) {
+      GUARD_LOGW("decrypt_exec_regions: dlsym('%s') returned NULL, skipping", regions[i].symbol);
+      continue;
+    }
+    const uintptr_t a = (uintptr_t)addr;
+    const uintptr_t pg = a & ~(uintptr_t)(pagesize - 1);
+    const uintptr_t end = (a + regions[i].size + pagesize - 1) & ~(uintptr_t)(pagesize - 1);
+    if (found == 0) {
+      span_start = pg;
+      span_end = end;
+    } else {
+      if (pg < span_start) span_start = pg;
+      if (end > span_end) span_end = end;
+    }
+    found++;
   }
 
-  GUARD_LOGI("decrypt_region: decrypted '%s' (%zu bytes) at %p", region->symbol, region->size, addr);
+  if (found == 0) return 0; /* nothing to do */
+
+  const size_t len = (size_t)(span_end - span_start);
+  uint8_t *staging = (uint8_t *)malloc(len);
+  if (!staging) {
+    GUARD_LOGE("decrypt_exec_regions: malloc(%zu) failed for staging buffer", len);
+    return -1;
+  }
+
+  /* Copy the whole span through first -- this preserves any bytes that
+   * belong to neither region byte-identical (same PT_LOAD segment, but not
+   * one of our regions), since only the sub-ranges below get touched. */
+  memcpy(staging, (void *)span_start, len);
+
+  /* Pass 2: decrypt each region's bytes within the staging copy. */
+  for (size_t i = 0; i < count; i++) {
+    if (!regions[i].exec) continue;
+    void *addr = dlsym(handle, regions[i].symbol);
+    if (!addr) continue; /* already warned above */
+    const uintptr_t off = (uintptr_t)addr - span_start;
+    guard_aes_ctr_xcrypt(g_key, regions[i].nonce, staging + off, regions[i].size);
+    GUARD_LOGI("decrypt_exec_regions: decrypted '%s' (%zu bytes) at %p", regions[i].symbol, regions[i].size, addr);
+  }
+
+  /* Swap the live file-backed mapping for anon memory at the same address
+   * -- this is the step that sidesteps execmod entirely (see comment
+   * above). MAP_FIXED either lands exactly at span_start or fails; it never
+   * silently picks a different address. */
+  void *mapped = mmap((void *)span_start, len, PROT_READ | PROT_WRITE,
+                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+  if (mapped == MAP_FAILED || mapped != (void *)span_start) {
+    GUARD_LOGE("decrypt_exec_regions: MAP_FIXED anon replacement failed at %p (errno=%d)", (void *)span_start, errno);
+    free(staging);
+    return -1;
+  }
+
+  memcpy((void *)span_start, staging, len);
+  free(staging);
+
+  if (mprotect((void *)span_start, len, PROT_READ | PROT_EXEC) != 0) {
+    GUARD_LOGE("decrypt_exec_regions: mprotect(RX) failed on anon replacement at %p (errno=%d)", (void *)span_start, errno);
+    return -1;
+  }
+
+  __builtin___clear_cache((char *)span_start, (char *)span_end); /* mandatory on ARM64, see §9.2 */
+  GUARD_LOGI("decrypt_exec_regions: replaced %zu-byte span at %p with anon RX mapping (%zu region(s))", len, (void *)span_start, found);
   return 0;
 }
 
@@ -119,12 +231,25 @@ static void *finish_handle(void *handle, const char *filename) {
   }
 
   GUARD_LOGI("finish_handle: intercepted dlopen('%s'), decrypting %zu region(s)", filename, k_regions_count);
+
+  /* Data regions first, in place -- see decrypt_region()'s comment on why
+   * that's safe for these. */
   for (size_t i = 0; i < k_regions_count; i++) {
+    if (k_regions[i].exec) continue;
     if (decrypt_region(handle, &k_regions[i]) != 0) {
-      GUARD_LOGE("finish_handle: FATAL decrypting region %zu/%zu, aborting process", i + 1, k_regions_count);
+      GUARD_LOGE("finish_handle: FATAL decrypting data region '%s', aborting process", k_regions[i].symbol);
       abort(); /* fail closed -- see decrypt_region() comment */
     }
   }
+
+  /* Exec regions together, via the MAP_FIXED anon-replacement path -- see
+   * decrypt_exec_regions()'s comment for why these can't use the simple
+   * in-place approach above. */
+  if (decrypt_exec_regions(handle, k_regions, k_regions_count) != 0) {
+    GUARD_LOGE("finish_handle: FATAL decrypting exec region span, aborting process");
+    abort(); /* fail closed -- see decrypt_exec_regions() comment */
+  }
+
   return handle;
 }
 

@@ -76,8 +76,6 @@ packer/
     src/dev/packer/guard/      # compiled independently and injected as classesN.dex --
       GuardBridge.java          # NOT part of the target app's own build. Same logic as
       GuardApplication.java     # android/GuardBridge.kt+App.kt, ported to plain Java.
-    compile-only-stubs/        # javac-time-only FlutterLoader stub (see file comment --
-      .../FlutterLoader.java    # never included in the actual injected dex)
     build.sh                   # compiles + dexes the above via javac + d8
   README.md                    # this file
 ```
@@ -228,8 +226,7 @@ and `zipalign` where the real CLI tools couldn't run natively) and the
   - `apk-inject/build.sh` actually compiled `GuardBridge.java` +
     `GuardApplication.java` (against a real downloaded `android.jar`) and
     `d8`-dexed them into a `classesN.dex`, confirmed (by parsing the dex's
-    own `class_defs`) to contain exactly the 2 real classes and NOT the
-    javac-time-only `FlutterLoader` stub.
+    own `class_defs`) to contain exactly the 2 real classes.
   - `axml_patch.py`'s binary manifest edit was run against the real
     `AndroidManifest.xml` from the reference APK, and independently
     re-verified by dumping *every* element/attribute before and after: of
@@ -250,6 +247,32 @@ and `zipalign` where the real CLI tools couldn't run natively) and the
     manifest still reads the patched value, the injected dex is
     byte-identical to what was built, and `classes.dex`/`resources.arsc`
     are untouched.
+- **`pack_existing_apk.sh` was then run end-to-end on a real machine (real
+  NDK, real `apksigner`, not this sandbox's substitutes) against a real
+  APK, and installed on a real device -- and it crashed on launch.** This
+  is the actual device-testing feedback loop the "Known limitations"
+  section below kept flagging as unprovable in-sandbox, and it caught a
+  real bug the sandbox categorically could not have caught:
+  `GuardApplication.onCreate()` originally called
+  `new FlutterLoader().startInitialization(this)` (mirroring
+  `App.kt`/Handover.md's own suggested approach) to load `libflutter.so`
+  before installing the GOT hook. On the real device,
+  `io.flutter.embedding.engine.loader.FlutterLoader` turned out to have
+  been fully removed from that build's `classes.dex` by R8 (confirmed by
+  grepping the extracted dex for class descriptors: every other
+  `io/flutter/embedding/engine/*` class had one, `.../loader/FlutterLoader`
+  had none -- only its name survived inside unrelated log-message string
+  literals), causing an immediate `NoClassDefFoundError` in
+  `Application.onCreate()`. **Fixed** by dropping the `FlutterLoader`
+  dependency entirely: `GuardApplication`/`App.kt` now call
+  `System.loadLibrary("flutter")` directly. This is not just a fix for one
+  broken build -- it's strictly more robust in general, since the GOT hook
+  only ever needed `libflutter.so` mapped into the process (a native-level
+  fact), never anything from Flutter's Java API surface, which is exactly
+  the part R8/Flutter-version changes can rename or remove out from under
+  you. The `apk-inject/compile-only-stubs/` scaffolding this used to need
+  (to satisfy `javac` without a real Flutter jar) is gone along with the
+  dependency.
 
 Concretely, `build_and_pack.sh` itself (the literal Bash script, invoking
 the literal `flutter`/`cmake`/`zip`/`zipalign`/`apksigner` CLIs) was **not**
@@ -269,29 +292,71 @@ cannot run on this host at all).
 
 Remaining known gaps, now much narrower given the above:
 
-1. **W^X / SELinux `execmod` fallback is a stub, not implemented.**
-   `Handover.md` §9.1 asks for an anon-exec-mapping + engine-blob-mode
-   fallback when the in-place `mprotect(RW)`\-\>decrypt\-\>`mprotect(RX)`
-   sequence is blocked on some Android 10+ devices. `trampoline.c`'s
-   `decrypt_region()` implements the in-place path fully (the primary,
-   required path per the §13 decision) but on `mprotect` failure it logs
-   and calls `abort()` rather than falling back. A same-address `mremap`
-   trick was considered and rejected during implementation: the two
-   instruction regions in the reference APK sit **32 bytes apart on the
-   same page**, so a page-granular remap of one region would clobber the
-   other. The doc's actual fallback (feed decrypted pointers to the engine
-   via its native embedder API, bypassing `dlopen` entirely) requires
-   replacing the standard Java `FlutterActivity`/engine embedding with a
-   custom native entry point -- a separate, substantial piece of work that
-   needs the Flutter engine's embedder headers to implement correctly, and
-   could not be attempted blind. **v2 plan:** prototype the embedder-blob
-   handoff against the actual Flutter engine version in use, behind the
-   same `guard_region_t.exec` flag structure already in place. Until then:
-   run the full device test matrix (§10) specifically watching for
-   `execmod` denials in `logcat`; if any target device hits this, v1 will
-   abort on startup on that device rather than silently misbehave.
+1. **W^X / SELinux `execmod` fallback: implemented and CONFIRMED WORKING
+   on a real device.** This started as the theoretical gap `Handover.md` §9.1 warns
+   about, then was empirically confirmed: a real OnePlus 6T (Android 11,
+   enforcing SELinux, non-rooted -- an unremarkable stock device) hit
+   `avc: denied { execmod }` on `base.apk` the very first time the packer
+   ran, meaning the naive in-place `mprotect(RW)`\-\>decrypt\-\>`mprotect(RX)`
+   sequence fails on essentially every modern device, not just a corner
+   case. A same-address per-region `mremap`/remap trick was considered and
+   rejected early on for the reason still true today: the two instruction
+   regions in the reference APK sit **32 bytes apart on the same page**, so
+   naive page-granular remapping of one region would clobber the other.
+   The doc's other suggested fallback (feed decrypted pointers to the
+   engine via its native embedder API, bypassing `dlopen` entirely) was
+   ruled out as far more invasive -- it requires replacing the standard
+   Java `FlutterActivity`/engine embedding with a custom native entry
+   point.
 
-2. **`anti_instr.c` is a v1 no-op stub**, as explicitly permitted by
+   **Implemented instead:** `trampoline.c`'s `decrypt_exec_regions()`
+   computes the page-aligned span covering *all* exec regions together (not
+   per-region), decrypts into a scratch buffer first, then atomically swaps
+   the live file-backed mapping for anonymous memory at the *same* virtual
+   address (`mmap(..., MAP_FIXED | MAP_ANONYMOUS)`) before marking it
+   `PROT_EXEC`. Anonymous memory was never file-backed, so SELinux's
+   `execmod` class does not apply to it -- only `execmem` does, which is a
+   normal, always-granted permission for `untrusted_app` (this is exactly
+   how JIT engines get executable pages on Android). Keeping the same
+   address avoids the relocation risk of moving the instructions elsewhere:
+   no `dlsym` hook or redirect table is needed, and no assumption about
+   Dart AOT position-independence is required. Non-exec (data) regions are
+   unaffected by any of this and still use the simple in-place path
+   (`execmod` is specifically about the *executable* transition).
+
+   Verified on the OnePlus 6T: the device log shows both instruction
+   regions decrypted, `replaced 3141632-byte span ... with anon RX mapping`,
+   and **no `execmod` denial** -- the app now progresses past this point.
+   (The `MAP_FIXED`-over-linker-mapping concern raised during design turned
+   out to be a non-issue in practice, as expected since Flutter never
+   `dlclose()`s `libapp.so`.)
+
+2. **Snapshot decrypts to garbage after the `execmod` fix -- suspected
+   build-vs-runtime key mismatch, under active diagnosis.** With `execmod`
+   solved, the next device run got further and then `SIGSEGV`'d inside
+   `libflutter.so` during `FlutterJNI.performNativeAttach`, dereferencing a
+   wild pointer -- the signature of the engine reading a snapshot whose
+   *instruction* bytes are wrong. Ruled out in the sandbox, no device
+   needed: (a) the AES-CTR primitive round-trips byte-for-byte across the
+   Python-encrypt / C-decrypt language boundary at the exact region sizes
+   (92768, 3046944); (b) the packer's symbol->file-offset conversion
+   (`vaddr_to_file_offset`, section-header based) produces the *same* offset
+   as the program-header (`PT_LOAD`) based conversion that `dlsym` implies
+   at runtime, and both regions lie fully inside the R+X segment -- so the
+   packer encrypts exactly the bytes `dlsym` resolves; (c) the device log
+   confirms `decrypt_exec_regions` hit the correct addresses/sizes/span.
+   That leaves the AES **key**: the build derives it from the cert exported
+   by `keytool -exportcert`, the runtime derives it from
+   `apkContentsSigners()`; if those cert DER bytes differ, the key differs
+   and the instructions decrypt to garbage. To confirm without guessing,
+   `encrypt_snapshot.py` and `GuardBridge` now log matching non-secret
+   fingerprints (`cert-fp`, `key-fp` = first 4 bytes of each SHA-256, tag
+   `libguard`). Next device run: compare the pack-time line with the
+   `logcat` line -- `cert-fp` differs => different signing cert; `cert-fp`
+   matches but `key-fp` differs => Python/Java HKDF disagree; both match =>
+   the diagnosis is wrong and the mechanism needs another look.
+
+3. **`anti_instr.c` is a v1 no-op stub**, as explicitly permitted by
    `Handover.md` §12 deliverable 5. This is the layer that would actually
    defend the decrypted-in-memory window (ptrace/Frida/debugger-attach
    detection) -- encryption-at-rest alone does not, see "what this does
@@ -303,7 +368,7 @@ Remaining known gaps, now much narrower given the above:
    trusted -- do not ship anti-Frida logic that hasn't been tested against
    Frida.
 
-3. **The GOT-hook's `DT_SYMTAB`/`DT_STRTAB`/`DT_JMPREL` address computation
+4. **The GOT-hook's `DT_SYMTAB`/`DT_STRTAB`/`DT_JMPREL` address computation
    assumes `base + d_ptr`** (the standard convention used by essentially
    every open-source Android PLT-hook implementation: xHook, legend, etc.).
    A small number of toolchains/loaders are known to pre-relocate these
@@ -315,7 +380,7 @@ Remaining known gaps, now much narrower given the above:
    device where the assumption is actually wrong. Confirm on the device
    test matrix.
 
-4. **`readelf` text-output parsing in `encrypt_snapshot.py` still hasn't
+5. **`readelf` text-output parsing in `encrypt_snapshot.py` still hasn't
    exercised the real `readelf` binary** -- no `readelf` was available in
    the authoring sandbox, so what actually ran (and was verified end-to-end
    against the real reference APK, all 3 ABIs) was the `_MiniElf` fallback
@@ -330,22 +395,21 @@ Remaining known gaps, now much narrower given the above:
    and diff the resulting `regions.h` against a `_MiniElf`-produced one for
    the same input before trusting the `readelf` path in CI.
 
-5. **Startup ordering is load-bearing, not incidental** -- caught and fixed
-   during review, not by the original handover text. `guard_ctor()` patches
-   a GOT slot *inside libflutter.so*, which means libflutter.so must
-   already be mapped when `System.loadLibrary("guard")` runs, or the hook
-   install fails and the process aborts (fail-closed by design). A first
-   draft of `App.kt` referenced `GuardBridge` from a companion `init` block
-   to force early class-load-time loading -- that does NOT work, because
-   nothing loads libflutter.so that early on a plain `Application`; it's
-   loaded lazily later by the engine's own init path. The fix:
-   `App.kt.onCreate()` now explicitly calls
-   `FlutterLoader().startInitialization(this)` *before*
-   `GuardBridge.install(this)`. This has not been run on a device --
-   confirm the exact sequencing holds for your Flutter engine version on
-   the device test matrix.
+6. **Startup ordering is load-bearing, not incidental.** `guard_ctor()`
+   patches a GOT slot *inside libflutter.so*, which means libflutter.so
+   must already be mapped when `System.loadLibrary("guard")` runs, or the
+   hook install fails and the process aborts (fail-closed by design). A
+   first draft of `App.kt` referenced `GuardBridge` from a companion
+   `init` block to force early class-load-time loading -- that does NOT
+   work, because nothing loads libflutter.so that early on a plain
+   `Application`; it's loaded lazily later by the engine's own init path.
+   The fix (caught during review): `App.kt.onCreate()` explicitly loads
+   libflutter.so *before* `GuardBridge.install(this)`. This ordering has
+   now been confirmed correct on a real device -- see the
+   `System.loadLibrary("flutter")` bug entry above for the one part of
+   this that review couldn't catch (*how* to load it, not *when*).
 
-6. **`build_and_pack.sh`'s repack step updates the original APK in place**
+7. **`build_and_pack.sh`'s repack step updates the original APK in place**
    (copy + targeted `zip -0` replace/add of just `lib/<abi>/libapp.so` and
    `lib/<abi>/libguard.so`) rather than rebuilding the archive from
    scratch -- caught and fixed during review (a first draft rebuilt the
@@ -367,7 +431,7 @@ Remaining known gaps, now much narrower given the above:
    correctly -- but run the actual script once on a machine that has them
    before shipping.
 
-7. **JNI class path is hardcoded** (`dev.packer.guard.GuardBridge`, chosen
+8. **JNI class path is hardcoded** (`dev.packer.guard.GuardBridge`, chosen
    deliberately so it doesn't need to match your app's actual package --
    see `GuardBridge.kt`/`GuardBridge.java`, which share this constraint).
    If you move that file, `guard.c`'s
@@ -378,7 +442,7 @@ Remaining known gaps, now much narrower given the above:
    symbol from two different compiled classes with different behavior --
    pick one path per app.
 
-8. **`axml_patch.py` (Path A) only changes an existing attribute's value,
+9. **`axml_patch.py` (Path A) only changes an existing attribute's value,
    it does not add a missing one.** If `<application>` has no
    `android:name` attribute at all, `pack_existing_apk.sh` fails at the
    manifest-patch step. Handled correctly: the more common case where
@@ -388,6 +452,94 @@ Remaining known gaps, now much narrower given the above:
    *replaces* that class's logic rather than merging into it -- there's no
    general way to merge into unknown existing bytecode without much more
    invasive smali-level patching, which is explicitly out of scope for v1).
+   A non-destructive injection that *coexists* with an existing custom
+   Application is possible and worth building for the common case -- either
+   (a) generate `GuardApplication` to `extend` the app's existing class and
+   `super`-chain it (reuses the attribute-only manifest patch), or (b)
+   inject an auto-init `<ContentProvider>` whose `onCreate` runs the hook
+   (touches nothing about the Application, but needs the manifest to already
+   carry the provider attribute strings + resource-map entries -- which
+   provider-heavy apps, e.g. anything with Firebase/androidx-startup,
+   already do). Neither is implemented yet; see limitation #10 for when even
+   this is moot.
+
+10. **Apps that verify their own integrity/signature at runtime (RASP) are
+    out of scope -- packing them cannot work, by construction.** Packing
+    *requires* re-signing (there is no original signing key in the no-source
+    path) and modifies bytes (encrypts `libapp.so`, adds a dex, patches the
+    manifest). An app that checks its own APK signature or a bundle hash at
+    startup will detect all of that and refuse to run -- no amount of
+    cleaner injection or *smaller* encryption scope helps, because the
+    signature check fires regardless of whether anything was encrypted, and
+    a bundle-hash check fires on any single changed byte. This is not a bug
+    in the packer; it is the target app deliberately defending against
+    exactly this repackaging. **How to detect one before wasting a device
+    cycle:** look in the APK for a commercial RASP/app-shielding SDK. The
+    real example that motivated this note is **V-Key V-OS** (a hardened
+    "Authenticator" app): tells include native libs `libvosWrapperEx.so`,
+    `libloadTA.so`/`libtaInterface.so` (Trusted-App loader), `libchecks.so`,
+    `libZeroCore.so`/`libzfcore.so`; assets `voscodesign.vky` (a V-OS
+    code-signing blob) and `vkeylicensepack` (contains a `BndlHsh` =
+    bundle-hash field); and a `<provider android:name=...VGStartUpDetector>`
+    plus `zygotePreloadName=vkey.android.vos.VosZygotePreload` in the
+    manifest. Other vendors (Promon SHIELD, Guardsquare/DexGuard RASP,
+    Appdome, ziMperium) leave similar fingerprints. **One-command
+    confirmation:** re-sign the *untouched* APK with your test key
+    (`apksigner sign`, no repack/encrypt/inject) and launch it -- if it
+    crashes/exits, the app rejects any signature but its own and packing is
+    impossible for it; if it runs, RASP is not the blocker and the custom
+    Application injection (limitation #9) is the real, solvable issue.
+    Separately worth noting: an app already shipping full RASP has *stronger*
+    protection than this packer adds (we defend against static snapshot
+    analysis at rest; RASP defends the running process too), so packing it
+    would add little even if it worked -- it is the wrong target class, not
+    a failure of the tool.
+
+    **Two distinct failure modes -- don't conflate them (learned from the
+    V-OS example).** RASP apps can break packing at two different points,
+    and the *observed* VSA crash was the first, not the (assumed) second:
+    (i) *Runtime class loading skipped.* V-OS ships the app's own classes
+    ENCRYPTED in `assets/` (e.g. `crypto_ta.bin`, content-addressed
+    `assets/data/internal/<sha256>` blobs) and installs them into the
+    classloader from the real `Application` class's early lifecycle
+    (`attachBaseContext`). VSA's `Application` (`ertil.skauf`, present in
+    `classes.dex`) does this; the protected classes -- including the
+    manifest-declared `<provider>` `com.vkey.android.vguard.VGStartUpDetector`
+    -- are in NONE of the dex files. Overwriting `android:name` with
+    `--force-application-overwrite` discards that bootstrap, so V-OS never
+    installs its classes and the app dies with `ClassNotFoundException:
+    ...VGStartUpDetector` at provider creation -- *before* any integrity
+    check. A non-destructive injection (subclass the existing Application and
+    `super`-chain it, limitation #9) would preserve the bootstrap and get
+    past this. (ii) *Integrity/signature rejection.* Only reached if (i) is
+    solved: V-OS then verifies the bundle hash / code-sign and would detect
+    the re-sign + encrypted `libapp.so` + added dex. The one-command re-sign
+    test isolates (ii) from (i): a re-signed-but-otherwise-untouched APK runs
+    `ertil.skauf` normally, so if it still crashes the blocker is integrity;
+    if it runs, only the injection point (i) needs fixing.
+
+    **RESOLVED empirically for VSA -- it is NOT integrity-blocked.** Both
+    tests were run on the real device: (1) the re-signed-but-untouched APK
+    launched fine (V-OS accepts a foreign signature), and (2) an
+    `--encrypt-only` build (encrypted `libapp.so`, re-signed, **no**
+    injection of any kind) booted V-OS fully -- it loaded `libfjvmoyxzvf.so`,
+    decompressed and installed its protected `Anonymous-DexFile` (the vkey
+    classes), started `DevelopMainActivity`, and created the `FlutterEngine`
+    -- and only *then* `SIGSEGV`'d inside `libflutter.so` at
+    `FlutterJNI.performNativeAttach` on a wild pointer, with **no** tamper/
+    integrity/signature message anywhere in `logcat`. That is exactly the
+    "garbage instructions" crash of an un-decrypted snapshot, at the same
+    frame as the testapp's key-mismatch crash. Conclusion: **V-OS's bundle
+    hash / code-sign does NOT cover `libapp.so`** (nor does it reject
+    re-signing), so the encryption itself is viable on this app. The only
+    real blocker was failure mode (i) -- the destructive Application
+    overwrite. The fix is any *non-destructive* injection that leaves
+    `ertil.skauf` intact; the minimal one (no Java at all) is to add
+    `libguard.so` as a `DT_NEEDED` of `libflutter.so` and bake the key into
+    it (limitation #9's option, generalized). So a V-OS-class RASP app is
+    NOT automatically out of scope -- it depends entirely on whether the
+    RASP's integrity coverage includes `libapp.so`, which the two tests
+    above determine cheaply.
 
 ## Build vs. buy
 

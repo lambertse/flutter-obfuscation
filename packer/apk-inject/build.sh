@@ -37,26 +37,18 @@ done
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 
-# 1. Compile the compile-time-only stub separately, into its own jar. This
-#    jar is used ONLY as a javac -classpath entry below -- it is never fed
-#    to d8, so the stub class never ends up in the output dex (the real
-#    FlutterLoader class already exists in the target APK's own
-#    classes.dex at runtime; see compile-only-stubs/.../FlutterLoader.java
-#    for why a duplicate class definition here would be wrong, not just
-#    redundant).
-mkdir -p "$WORK/stub-classes"
-javac -d "$WORK/stub-classes" -classpath "$ANDROID_JAR" \
-  "$SCRIPT_DIR/compile-only-stubs/io/flutter/embedding/engine/loader/FlutterLoader.java"
-( cd "$WORK/stub-classes" && jar cf "$WORK/stub.jar" . )
-
-# 2. Compile the real sources against android.jar + the stub jar.
+# GuardApplication.java no longer references any Flutter Java class (see
+# its class doc: it loads libflutter.so directly via
+# System.loadLibrary("flutter") instead of going through Flutter's
+# FlutterLoader, which turned out not to reliably survive R8 shrinking in
+# release builds). So this only ever needs android.jar -- no compile-time
+# stub for a Flutter class is required anymore.
 mkdir -p "$WORK/real-classes"
 javac -d "$WORK/real-classes" \
-  -classpath "$ANDROID_JAR:$WORK/stub.jar" \
+  -classpath "$ANDROID_JAR" \
   "$SCRIPT_DIR/src/dev/packer/guard/GuardBridge.java" \
   "$SCRIPT_DIR/src/dev/packer/guard/GuardApplication.java"
 
-# 3. Dex ONLY the real classes (not the stub) into the final output.
 mkdir -p "$WORK/dexout"
 "$D8" --output "$WORK/dexout" \
   --lib "$ANDROID_JAR" \

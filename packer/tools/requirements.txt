@@ -1,1 +1,5 @@
 cryptography>=41
+# lief: ELF surgery for --inject-mode dt-needed (adds libguard.so as a
+# DT_NEEDED of libflutter.so). Only needed for that mode; the default
+# 'application' mode and the diagnostics don't import it.
+lief>=0.14

@@ -64,7 +64,7 @@ containers stripped down to just a runtime):
 | Android SDK build-tools | `zipalign`, `apksigner`, `d8` | Android Studio SDK Manager |
 | JDK | `apksigner`, `keytool`, `d8`, compiling `packer/apk-inject` | bundled with Android Studio, or standalone |
 | `android.jar` | compiling `packer/apk-inject` (Path A only) | any `platforms/android-<N>/android.jar` from an installed SDK |
-| Python 3.10+ | `encrypt_snapshot.py`, `axml_patch.py` | system package manager |
+| Python 3.8+ | `encrypt_snapshot.py`, `axml_patch.py` | system package manager |
 | `readelf` | ELF parsing in `encrypt_snapshot.py` | `binutils` (Linux: usually preinstalled; macOS: `brew install binutils`) |
 | `zip`, `unzip`, `keytool`, `adb` | packaging / device testing | usually already present with the above |
 | Flutter SDK | Path B only (building the app from source) | flutter.dev |
@@ -95,6 +95,7 @@ Two things to know before running it:
 
 ```bash
 export ANDROID_NDK_HOME=/path/to/sdk/ndk/<version>
+# export ANDROID_NDK_HOME=/Users/tri.le/Library/Android/sdk/ndk/28.2.13676358
 export ANDROID_BUILD_TOOLS=/path/to/sdk/build-tools/<version>
 
 # throwaway keystore for testing
@@ -103,8 +104,8 @@ keytool -genkeypair -v -keystore test.jks -storepass testpass -keypass testpass 
 
 export KS_PASS=testpass
 packer/tools/pack_existing_apk.sh \
-  --input-apk /path/to/app-release.apk \
-  --android-jar /path/to/sdk/platforms/android-34/android.jar \
+  --input-apk assets/app-release.apk \
+  --android-jar /Users/tri.le/Library/Android/sdk/platforms/android-29/android.jar \
   --keystore test.jks --key-alias testkey --keystore-pass-env KS_PASS \
   --dev-key-hex "$(openssl rand -hex 32)"
 ```
@@ -146,6 +147,55 @@ another. This is also the one thing that genuinely cannot be verified
 without a device — everything up to this point (manifest patch, dex
 injection, encryption, signing) has been structurally confirmed, but
 whether the app actually *launches* is unproven until you run it.
+
+## Path A-DT — apps with a custom Application class (`--inject-mode dt-needed`)
+
+Path A's default injection retargets `<application android:name>` to our
+`GuardApplication`. That **replaces** the app's own Application class, so it
+breaks any app that already declares one — including apps that bootstrap a
+RASP/anti-tamper SDK (e.g. V-Key V-OS) from it. For those, use the
+no-Java injection instead:
+
+```bash
+packer/tools/pack_existing_apk.sh \
+  --input-apk your-app.apk \
+  --keystore test.jks --key-alias testkey --keystore-pass-env KS_PASS \
+  --abis arm64-v8a \
+  --inject-mode dt-needed
+```
+
+Instead of touching any Java, this adds `libguard.so` as a **`DT_NEEDED`
+dependency of the app's own `libflutter.so`** (via `lief`) and **bakes the
+AES key into `libguard.so`**. Loading the engine then auto-loads our hook
+before it ever opens `libapp.so` — no Application, no manifest, no dex
+changed, so the app's own startup (and any RASP it bootstraps) is
+undisturbed. Requires `pip install lief` (see `requirements.txt`).
+
+**Run the mechanism test first.** Before a full encrypted build, prove the
+injection works on your device with the *encryption turned off*:
+
+```bash
+#   ... same command ...  --inject-mode dt-needed --mechanism-test
+adb install -r build/packed/app-packed.apk    # then launch it
+adb logcat | grep -iE 'libguard|DEBUG'
+```
+
+- **App runs normally** and you see `finish_handle: intercepted
+  dlopen('libapp.so'), decrypting 0 region(s)` → the `DT_NEEDED` load + GOT
+  hook work *and* the app tolerates the patched `libflutter.so`. Now do a
+  full run (drop `--mechanism-test`) — it encrypts `libapp.so` and embeds
+  the key, and the app should launch decrypted.
+- **App crashes at startup, before any Flutter UI** → either the patched
+  `libflutter.so` doesn't load on this device or a RASP check rejects it.
+  That's the one thing this injection can't sidestep (it's the only native
+  lib besides `libapp.so` it modifies). Capture the `libguard`/`DEBUG`
+  logcat lines; the fallback is a ContentProvider injection (doesn't touch
+  `libflutter.so`), or `--inject-mode application` on a non-RASP app.
+
+The embedded key is deliberately baked into `libguard.so` (not derived from
+the signing cert): on this path there's no `GuardBridge` to derive it, and
+the cert is public inside the APK anyway, so cert-derivation added no real
+secrecy — see `packer/README.md` limitation #10.
 
 ## Path B — you have Flutter project source
 
@@ -190,10 +240,15 @@ runtime the same way as Path A above.
 
 ## Known limitations to keep in mind
 
-- The W^X/SELinux `execmod` fallback described in `Handover.md` §9.1 is a
-  **stub** — if in-place `mprotect` is blocked on a device, the app
-  currently `abort()`s at startup rather than falling back. Watch `logcat`
-  for `execmod`/`avc: denied` on your test matrix.
+- The W^X/SELinux `execmod` fallback described in `Handover.md` §9.1 is now
+  implemented: exec regions (`_kDartVmSnapshotInstructions`,
+  `_kDartIsolateSnapshotInstructions`) decrypt into a scratch buffer, then
+  the live file-backed mapping is swapped for anonymous memory at the same
+  address before it's marked executable — this is what avoids the
+  `execmod` denial (anonymous memory only needs `execmem`, which is always
+  granted to `untrusted_app`). If you still see `mprotect`/`MAP_FIXED`
+  failures at startup, that's a different, unexpected failure — capture the
+  `libguard`-tagged `logcat` lines and the `avc: denied` line if present.
 - `anti_instr.c` (anti-Frida/ptrace detection) is a v1 no-op. Encryption at
   rest is the only protection currently active; see "What this is" above.
 - **Path A's manifest patch (`axml_patch.py`) only handles changing an

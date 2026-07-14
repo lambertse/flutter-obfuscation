@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.pm.SigningInfo;
 import android.os.Build;
+import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
@@ -40,8 +41,9 @@ public final class GuardBridge {
 
     /**
      * Call once, from GuardApplication.onCreate(), AFTER
-     * FlutterLoader().startInitialization(context) has returned. See
-     * GuardApplication's class doc for the full required ordering.
+     * System.loadLibrary("flutter") has run there. See GuardApplication's
+     * class doc for the full required ordering and why that's a direct
+     * System.loadLibrary call rather than Flutter's own FlutterLoader.
      *
      * Deliberately does NOT catch exceptions here (matches GuardBridge.kt):
      * a failure here (e.g. cert reading) left uncaught crashes the app
@@ -57,7 +59,21 @@ public final class GuardBridge {
         byte[] certDer = readCurrentSigningCertDer(context);
         byte[] ikm = concat(sha256(certDer), KDF_CONSTANT.getBytes(StandardCharsets.UTF_8));
         byte[] key = hkdfSha256(ikm, new byte[0], KDF_INFO.getBytes(StandardCharsets.UTF_8), AES_KEY_LEN);
+        // Non-secret fingerprints to diagnose a build-vs-runtime key
+        // mismatch: encrypt_snapshot.py prints the SAME two fingerprints at
+        // pack time. Compare them -- cert-fp differs => the APK is signed
+        // with a different cert than the packer derived the key from;
+        // cert-fp matches but key-fp differs => Java/Python HKDF disagree.
+        // Only the first 4 bytes of each SHA-256 are logged (leaks nothing).
+        Log.i("libguard", "GuardBridge: cert-fp=" + fp(certDer) + " key-fp=" + fp(key));
         nativeSetKey(key);
+    }
+
+    private static String fp(byte[] data) throws NoSuchAlgorithmException {
+        byte[] h = sha256(data);
+        StringBuilder sb = new StringBuilder(8);
+        for (int i = 0; i < 4; i++) sb.append(String.format("%02x", h[i] & 0xff));
+        return sb.toString();
     }
 
     /**

@@ -3,6 +3,7 @@ package dev.packer.guard
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.util.Log
 import java.security.MessageDigest
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
@@ -35,8 +36,10 @@ import javax.crypto.spec.SecretKeySpec
  * step loads libflutter.so lazily, later, during FlutterActivity's own
  * engine init -- well after class-load time. So this is NOT triggered
  * automatically by referencing GuardBridge early; call install() from
- * App.kt only AFTER FlutterLoader().startInitialization(context) has run.
- * See App.kt for the full required sequence.
+ * App.kt only AFTER System.loadLibrary("flutter") has run there. See
+ * App.kt for the full required sequence and why that's a direct
+ * System.loadLibrary call rather than going through Flutter's own
+ * FlutterLoader Java class.
  */
 object GuardBridge {
     private const val KDF_CONSTANT = "flutter-guard-v1"
@@ -46,8 +49,9 @@ object GuardBridge {
 
     /**
      * Call once, from Application.onCreate(), AFTER
-     * FlutterLoader().startInitialization(context) has returned (that call
-     * loads libflutter.so; see class doc above for why the order matters).
+     * System.loadLibrary("flutter") has run there (that loads libflutter.so;
+     * see class doc above for why the order matters, and why it's a direct
+     * System.loadLibrary call rather than Flutter's own FlutterLoader).
      * Loads libguard.so (runs its GOT-hook constructor), then derives and
      * installs the AES key. Both must complete before any FlutterEngine is
      * created / any FlutterActivity starts -- App.kt's onCreate() ordering
@@ -64,8 +68,17 @@ object GuardBridge {
             info = KDF_INFO.toByteArray(Charsets.UTF_8),
             length = AES_KEY_LEN,
         )
+        // Non-secret fingerprints to diagnose a build-vs-runtime key
+        // mismatch: encrypt_snapshot.py prints the SAME two fingerprints at
+        // pack time. cert-fp differs => APK signed with a different cert than
+        // the packer derived the key from; cert-fp matches but key-fp differs
+        // => Java/Python HKDF disagree. Only 4 bytes of each SHA-256 logged.
+        Log.i("libguard", "GuardBridge: cert-fp=${fp(certDer)} key-fp=${fp(key)}")
         nativeSetKey(key)
     }
+
+    private fun fp(data: ByteArray): String =
+        sha256(data).take(4).joinToString("") { "%02x".format(it) }
 
     /**
      * Returns the DER bytes of the certificate the CURRENTLY installed APK

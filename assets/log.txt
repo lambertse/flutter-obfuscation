@@ -1,0 +1,32 @@
+❯ packer/tools/pack_existing_apk.sh \       
+  --input-apk assets/vsa.apk \
+  --android-jar /Users/tri.le/Library/Android/sdk/platforms/android-29/android.jar \
+  --keystore test.jks --key-alias testkey --keystore-pass-env KS_PASS
+
+== [1/8] extracting APK ==
+== [2/8] obfuscation check (best-effort, no source available) ==
+  [arm64-v8a] 'package:' occurrences in libapp.so: 1323
+  (no --dart-package-name given: this counts ALL package: strings, including
+   the Flutter framework's own, which are numerous even in obfuscated builds --
+   treat this as informational, not a pass/fail gate. Pass --dart-package-name
+   if you know it, for a real gate.)
+  [armeabi-v7a] 'package:' occurrences in libapp.so: 1320
+  (no --dart-package-name given: this counts ALL package: strings, including
+   the Flutter framework's own, which are numerous even in obfuscated builds --
+   treat this as informational, not a pass/fail gate. Pass --dart-package-name
+   if you know it, for a real gate.)
+  [x86_64] 'package:' occurrences in libapp.so: 1323
+  (no --dart-package-name given: this counts ALL package: strings, including
+   the Flutter framework's own, which are numerous even in obfuscated builds --
+   treat this as informational, not a pass/fail gate. Pass --dart-package-name
+   if you know it, for a real gate.)
+== [3/8] checking existing Application class ==
+  current android:name = ertil.skauf
+FATAL: this app already declares a custom Application class (ertil.skauf).
+       Overwriting it with GuardApplication would silently DISCARD whatever that
+       class does -- this tool only injects a hook, it does not merge logic into
+       an existing class. Re-run with --force-application-overwrite only if
+       you've confirmed losing that class's behavior is acceptable, or extend
+       axml_patch.py's approach to patch the *existing* class's smali instead
+       (see docs/GUIDE.md and packer/README.md for the tradeoffs).
+(leaving work dir for inspection: /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6cYopZ)

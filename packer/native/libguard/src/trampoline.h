@@ -37,6 +37,17 @@ void guard_trampoline_init_hooks(guard_dlopen_fn real_dlopen,
 
 void guard_trampoline_set_key(const uint8_t key[GUARD_AES_KEY_LEN]);
 
+/*
+ * DT_NEEDED / no-Java injection path: if regions.h was generated with
+ * --embed-key (GUARD_HAVE_EMBEDDED_KEY == 1), set the key from the baked-in
+ * k_embedded_key so no GuardBridge.nativeSetKey call is needed. Called from
+ * guard.c's constructor, right after the hooks are installed and before any
+ * dlopen("libapp.so") can fire. A no-op when no key is embedded (the Java
+ * path, where nativeSetKey supplies the key instead). Returns 1 if it set an
+ * embedded key, 0 otherwise.
+ */
+int guard_trampoline_apply_embedded_key(void);
+
 /* Installed into libflutter.so's dlopen GOT slot. */
 void *guard_my_dlopen(const char *filename, int flags);
 

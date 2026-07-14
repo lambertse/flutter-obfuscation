@@ -1,0 +1,393 @@
+2026-07-13 17:19:46.255  4497-4497  DragController          net.oneplus.launcher                 D  onControllerInterceptTouchEvent ActionDown pos =538, 1743
+2026-07-13 17:19:46.255  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-13 17:19:46.256  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-13 17:19:46.257  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-13 17:19:46.257  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=0
+2026-07-13 17:19:46.257  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-13 17:19:46.260  4497-4497  TouchInteractionService net.oneplus.launcher                 D  onInputEvent# ev: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=538.0, y[0]=1743.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=161884390, downTime=161884390, deviceId=-1, source=0x1002, displayId=0 }
+2026-07-13 17:19:46.260  2448-2448  OpEdgeNavGestureHandler com.android.systemui                 I   mAllowNavGesture touch point is height than NavBarHeight.
+2026-07-13 17:19:46.286  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-13 17:19:46.287  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-13 17:19:46.287  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=2
+2026-07-13 17:19:46.287  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-13 17:19:46.329  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-13 17:19:46.329  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-13 17:19:46.329  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=2
+2026-07-13 17:19:46.329  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-13 17:19:46.343  4497-4497  DragController          net.oneplus.launcher                 D  onControllerInterceptTouchEvent ActionUp pos =538.0, 1743.0
+2026-07-13 17:19:46.353  1634-9143  ActivityTaskManager     system_server                        I  START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.example.testapp/.MainActivity bnds=[438,1592][641,1945]} from uid 10164 pid 4497
+2026-07-13 17:19:46.358  1634-9143  ANDR-PERF-JNI           system_server                        E  com_qualcomm_qtiperformance_native_perf_io_prefetch_start
+2026-07-13 17:19:46.359  1634-9143  ActivityTaskManager     system_server                        V  checkAndUpdateLocalList list: [com.android.chrome, com.autonavi.minimap, com.shuqiyuedu823.google, com.snapchat.android, com.google.android.youtube, com.amazon.avod.thirdpartyclient, com.google.android.apps.maps, com.tencent.qqlive, com.youku.phone, com.qiyi.video, com.duowan.kiwi, tv.danmaku.bili, com.google.android.calendar, com.lingdian.activity, local.pivot.pingmeter, com.whatsapp, com.netflix.mediaclient] UpdateDay: 2
+2026-07-13 17:19:46.363  1634-9143  ActivityTaskManager     system_server                        D  Updating New task bounds Rect(0, 0 - 0, 0)
+2026-07-13 17:19:46.365  1634-9143  ActivityTrigger         system_server                        D  ActivityTrigger activityPauseTrigger 
+2026-07-13 17:19:46.367  1040-1067  ANDR-IOP                vendor.qti.hardware.iop@2.0-service  E  io prefetch is disabled
+2026-07-13 17:19:46.368  4497-4497  BaseDraggingActivity    net.oneplus.launcher                 D  startActivity bookkeeping intent = Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.example.testapp/.MainActivity bnds=[438,1592][641,1945] }
+2026-07-13 17:19:46.368  4497-4497  Stats                   net.oneplus.launcher                 D  Intent.getPackage() is null. therefore try to get package name from componentName.getPackageName(): com.example.testapp
+2026-07-13 17:19:46.368  4497-4497  Stats                   net.oneplus.launcher                 D  Intent.getPackage() is null. therefore try to get package name from componentName.getPackageName(): com.example.testapp
+2026-07-13 17:19:46.369  4497-6138  Stats                   net.oneplus.launcher                 D  save stats in background ...
+2026-07-13 17:19:46.370  1634-1736  Compatibil...geReporter system_server                        D  Compat change id reported: 135634846; UID 11516; state: DISABLED
+2026-07-13 17:19:46.370  1634-1750  Compatibil...geReporter system_server                        D  Compat change id reported: 143937733; UID 11516; state: ENABLED
+2026-07-13 17:19:46.371  4497-4497  ItemClickHandler        net.oneplus.launcher                 D  onClick app, allappsTransProgress = 0.0, tag = AppInfo(id=-1 type=APP container=-1 screen=-1 cell(-1,-1) span(1,1) minSpan(1,1) rank=0 user=UserHandle{0} title=testapp hidden=false dirty = false newInstallTag=null componentName=ComponentInfo{com.example.testapp/com.example.testapp.MainActivity} searchResult=null suggestionApp=null)
+2026-07-13 17:19:46.371  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/secure/reminder_exp_learning_time_elapsed
+2026-07-13 17:19:46.371   871-871   ZygoteServer            pid-871                              I  Get USAP proc command with pid # 12313 block_kill# true
+2026-07-13 17:19:46.373   871-871   ZygoteServer            pid-871                              I  Get USAP proc command with pid # 12313 block_kill# false
+2026-07-13 17:19:46.373   871-871   ZygoteServer            pid-871                              I  Get USAP proc command with pid # 12313 block_kill# false
+2026-07-13 17:19:46.373  4497-4497  Launcher                net.oneplus.launcher                 D  onPause# hashcode: 263018263
+2026-07-13 17:19:46.374  4497-4497  ShelfLauncherCallbacks  net.oneplus.launcher                 I  onPause
+2026-07-13 17:19:46.375  1634-1750  ActivityManager         system_server                        I  Start proc 12313:com.example.testapp/u0a1516 for pre-top-activity {com.example.testapp/com.example.testapp.MainActivity}
+2026-07-13 17:19:46.377  4497-23802 sqlite3_android         net.oneplus.launcher                 E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-13 17:19:46.378  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-13 17:19:46.378  1634-1736  OpRestartProcessManager system_server                        D  updateSelf :  com.example.testapp, size : 30
+2026-07-13 17:19:46.381 12313-12313 example.testap          usap64                               E  Unknown bits set in runtime_flags: 0x800000
+2026-07-13 17:19:46.383  1634-1737  OPFD_CTRL_SVC           system_server                        D  [2]handle Starting Window for { com.example.testapp }, Dark? false
+2026-07-13 17:19:46.384 12313-12313 example.testap          usap64                               E  Not starting debugger since process cannot load the jdwp agent.
+2026-07-13 17:19:46.389  1296-23815 ANDR-RAMBOOST_SERVER    installd                             E  ramboost cmd_len = 120 cmd: iop_start -1 com.example.testapp /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw== false
+2026-07-13 17:19:46.389  1296-23815 ANDR-RAMBOOST_SERVER    installd                             E  is_in_recent_list is TRUE
+2026-07-13 17:19:46.389  1296-23815 ANDR-RAMBOOST_SERVER    installd                             E  io prefetch is deactivate
+2026-07-13 17:19:46.390  1634-1737  OPFD_Manager            system_server                        I  Dark? false, OP Force ? false
+2026-07-13 17:19:46.392  1296-23817 ANDR-RAMBOOST_SERVER    installd                             E  ramboost cmd_len = 123 cmd: iop_start 12313 com.example.testapp /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw== false
+2026-07-13 17:19:46.392  1296-23817 ANDR-RAMBOOST_SERVER    installd                             E  io prefetch Capture is deactivated 
+2026-07-13 17:19:46.392  1634-9143  HwuiBoostF...geListener system_server                        E  Exception : file not exits :/sys/module/houston/parameters/hwui_boost_enable
+2026-07-13 17:19:46.392  1634-9143  OpColorDisplayService   system_server                        D  frontPackageChanged: com.example.testapp
+2026-07-13 17:19:46.392  1634-1878  DisplayPowerController  system_server                        I  useProximityForceSuspend = false
+2026-07-13 17:19:46.392  1634-9143  OpColorDisplayService   system_server                        D  lpackageName: net.oneplus.launcher
+2026-07-13 17:19:46.392  1634-1878  RampAnimator            system_server                        I  target:0.24207628 rate:0.2352941 mCurrentValue:0.24207628 mTargetValue:0.24207628
+2026-07-13 17:19:46.393  1634-9143  OpProximityController   system_server                        D  noteFrontPackageChanged pkg:com.example.testapp uid:11516 lpkg:net.oneplus.launcher luid:10164
+2026-07-13 17:19:46.393  1634-9143  OemSceneMo...ivityStack system_server                        D  [scene] evaluateGameModes :  gameMsg.arg1=0 gameMsg.arg2=1
+2026-07-13 17:19:46.393  1634-9143  OpQuickReply            system_server                        D  setQuickReplyResumed focusedApp ActivityRecord{3f21c54 u0 com.example.testapp/.MainActivity t3516} pkgName com.example.testapp
+2026-07-13 17:19:46.397  1634-1737  ActivityTaskManager     system_server                        E  createRemoteAnimationTarget Task{5534251 #1 visible=false type=home mode=fullscreen translucent=true I=net.oneplus.launcher/.Launcher U=0 StackId=1 sz=1} top most activity ActivityRecord{1a5865b u0 net.oneplus.launcher/.Launcher t3187}
+2026-07-13 17:19:46.397  1634-1737  ActivityTaskManager     system_server                        E  createRemoteAnimationTarget Task{afb2c9f #3516 visible=true type=standard mode=fullscreen translucent=false I=com.example.testapp/.MainActivity U=0 StackId=3516 sz=1} top most activity ActivityRecord{3f21c54 u0 com.example.testapp/.MainActivity t3516}
+2026-07-13 17:19:46.400  4497-13942 LauncherAnimationRunner net.oneplus.launcher                 D  onAnimationStart#
+2026-07-13 17:19:46.401  4497-4497  ViewRootImpl[Launcher]  net.oneplus.launcher                 D  windowFocusChanged hasFocus=false inTouchMode=true
+2026-07-13 17:19:46.401  4497-4497  StateManager            net.oneplus.launcher                 D  setAnimation# targetState: null, anim: 86359339
+2026-07-13 17:19:46.402  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-13 17:19:46.402  4497-4497  QuickstepTransition     net.oneplus.launcher                 D  [OSP-1899] getLauncherContentAnimator: isAppOpening= true, trans= 0.0, -131.0
+2026-07-13 17:19:46.402  4497-4497  BaseActivity            net.oneplus.launcher                 D  addForceInvisibleFlag add flag = 2, currentFlag = 2
+2026-07-13 17:19:46.402  4497-4497  BaseActivity            net.oneplus.launcher                 D  Showing call stack: 
+                                                                                                        [BaseActivity] QuickstepAppTransitionManagerImpl.java, onAnimationStart, line: 158
+2026-07-13 17:19:46.406  4497-4497  Launcher                net.oneplus.launcher                 D  onWindowFocusChanged# hasFocus: false
+2026-07-13 17:19:46.409 12313-12313 Perf                    usap64                               I  Connecting to perf service.
+2026-07-13 17:19:46.412 12313-12313 example.testap          usap64                               I  [GL_OOM] ClampGrowthLimit 268435456
+2026-07-13 17:19:46.413 12313-12313 NetworkSecurityConfig   usap64                               D  No Network Security Config specified, using platform default
+2026-07-13 17:19:46.413 12313-12313 NetworkSecurityConfig   usap64                               D  No Network Security Config specified, using platform default
+2026-07-13 17:19:46.416 19780-19780 BoundBrokerSvc          com.google.android.gms               D  onBind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+2026-07-13 17:19:46.416 19780-19780 BoundBrokerSvc          com.google.android.gms               D  Loading bound service for intent: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+2026-07-13 17:19:46.427  2398-2415  OPConfig:ConfigProvider com.oneplus.config                   V  Module:OnePlusFontConfig
+2026-07-13 17:19:46.429 12313-12313 Config:Gra...FontConfig usap64                               E  Index 0 requested, with a size of 0
+2026-07-13 17:19:46.435  1686-1744  QMI_FW                  qcrild                               E  qmi_cci_get_ref: ref count increased 2
+2026-07-13 17:19:46.435  4497-23802 sqlite3_android         net.oneplus.launcher                 E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-13 17:19:46.436  1686-1744  QMI_FW                  qcrild                               E  qmi_cci_get_ref: ref count increased 2
+2026-07-13 17:19:46.437 12313-12313 libguard                usap64                               I  guard_hook_got_symbol: hooked 'dlopen' in 'libflutter.so' at 0x769ee94340
+2026-07-13 17:19:46.437 12313-12313 libguard                usap64                               E  guard_hook_got_symbol: no JUMP_SLOT reloc for 'android_dlopen_ext' in 'libflutter.so'
+2026-07-13 17:19:46.437 12313-12313 libguard                usap64                               I  guard_ctor: android_dlopen_ext not imported by libflutter.so (expected on most builds), skipping
+2026-07-13 17:19:46.437 12313-12313 libguard                usap64                               I  guard_anti_instr_check: v1 stub, no-op (see README v2 plan)
+2026-07-13 17:19:46.440 12313-12313 libguard                usap64                               I  nativeSetKey: key installed
+2026-07-13 17:19:46.446 12313-12313 example.testap          usap64                               E  [frame_perf] perfboost open tb_ctl file failed, isApp[1], errno=No such file or directory
+2026-07-13 17:19:46.447 12313-12313 libprocessgroup         usap64                               E  set_timerslack_ns write failed: Operation not permitted
+2026-07-13 17:19:46.449  1094-1884  DisplayIdentification   surfaceflinger                       W  Invalid EDID: falling back to serial number due to missing display name.
+2026-07-13 17:19:46.449  1094-1884  DisplayIdentification   surfaceflinger                       W  Invalid EDID: falling back to ASCII text due to missing serial number.
+2026-07-13 17:19:46.451 19780-23823 AdvertisingIdClient     com.google.android.gms               D  AdvertisingIdClient already created.
+2026-07-13 17:19:46.451 19780-23823 AdvertisingIdClient     com.google.android.gms               D  AdvertisingIdClient is not bounded. Starting to bind it...
+2026-07-13 17:19:46.457  1634-1754  ExtBatteryStatsService  system_server                        D  @@@@ awaitUninterruptibly in 43 ms
+2026-07-13 17:19:46.458  1634-1754  MyBatteryStatsHelper    system_server                        D  ===processSingleAppUsage===
+2026-07-13 17:19:46.459 19780-23823 AdvertisingIdClient     com.google.android.gms               D  AdvertisingIdClient is bounded
+2026-07-13 17:19:46.460 19780-23823 AdvertisingIdClient     com.google.android.gms               I  shouldSendLog 1811230372
+2026-07-13 17:19:46.460 19780-23823 AdvertisingIdClient     com.google.android.gms               I  GetInfoInternal elapse 8ms
+2026-07-13 17:19:46.478  2448-2448  EdgeBackGestureHandler  com.android.systemui                 D  updateTopPackage isHomeApp false
+2026-07-13 17:19:46.479  4497-6220  RecentTasksList         net.oneplus.launcher                 D  loadTasksInBackground: getRecentTasks
+2026-07-13 17:19:46.481  4497-6220  RecentTasksList         net.oneplus.launcher                 D  dumpTasks# id=3516, cmp=ComponentInfo{com.example.testapp/com.example.testapp.MainActivity}, uid=0, locked=false, isAppLocked=false;
+2026-07-13 17:19:46.485 12313-12313 libguard                usap64                               I  finish_handle: intercepted dlopen('libapp.so'), decrypting 2 region(s)
+2026-07-13 17:19:46.488 19743-22891 sqlite3_android         com.google.android.gms.persistent    E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-13 17:19:46.490 12313-12313 libguard                usap64                               I  decrypt_exec_regions: decrypted '_kDartVmSnapshotInstructions' (92768 bytes) at 0x7691eb4000
+2026-07-13 17:19:46.491  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-13 17:19:46.491  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-13 17:19:46.494  1634-1645  System                  system_server                        W  A resource failed to call release. 
+2026-07-13 17:19:46.495  1634-1645  System                  system_server                        W  A resource failed to call release. 
+2026-07-13 17:19:46.496  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-13 17:19:46.496  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-13 17:19:46.591 12313-12313 libguard                usap64                               I  decrypt_exec_regions: decrypted '_kDartIsolateSnapshotInstructions' (3046944 bytes) at 0x7691ecaa80
+2026-07-13 17:19:46.595 12313-12313 libguard                usap64                               I  decrypt_exec_regions: replaced 3141632-byte span at 0x7691eb4000 with anon RX mapping (2 region(s))
+2026-07-13 17:19:46.595 12313-12313 libguard                usap64                               W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-13 17:19:46.596 12313-12313 chatty                  usap64                               I  uid=11516(com.example.testapp) identical 1 line
+2026-07-13 17:19:46.596 12313-12313 libguard                usap64                               W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-13 17:19:46.591 12313-12313 example.testapp         usap64                               W  type=1400 audit(0.0:123877): avc: denied { read } for name="max_map_count" dev="proc" ino=4688103 scontext=u:r:untrusted_app:s0:c236,c261,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.example.testapp
+2026-07-13 17:19:46.603 12313-12313 libc                    usap64                               A  Fatal signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x3c1bab61f2a1f1 in tid 12313 (example.testapp), pid 12313 (example.testapp)
+2026-07-13 17:19:46.671 23838-23838 crash_dump64            pid-23838                            I  obtaining output fd from tombstoned, type: kDebuggerdTombstone
+2026-07-13 17:19:46.671   859-859   tombstoned              tombstoned                           I  received crash request for pid 12313
+2026-07-13 17:19:46.672 23838-23838 crash_dump64            pid-23838                            I  performing dump of process 12313 (target tid = 12313)
+2026-07-13 17:19:46.678 23838-23838 DEBUG                   pid-23838                            A  *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+2026-07-13 17:19:46.678 23838-23838 DEBUG                   pid-23838                            A  Build fingerprint: 'OnePlus/OnePlus6T/OnePlus6T:11/RKQ1.201217.002/2111252327:user/release-keys'
+2026-07-13 17:19:46.678 23838-23838 DEBUG                   pid-23838                            A  Revision: '0'
+2026-07-13 17:19:46.678 23838-23838 DEBUG                   pid-23838                            A  ABI: 'arm64'
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A  Timestamp: 2026-07-13 17:19:46+0700
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A  pid: 12313, tid: 12313, name: example.testapp  >>> com.example.testapp <<<
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A  uid: 11516
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A  signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x3c1bab61f2a1f1
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x0  0000000000000000  x1  0000007fee274758  x2  00000078070b74a0  x3  0000000000000001
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x4  0000000000000008  x5  0000000000000018  x6  0000000000000000  x7  0000000000000000
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x8  0000007691eb4000  x9  093c1bab61f2a1e1  x10 0000006d00017d08  x11 0000007691ec64d4
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x12 0000000000014bc1  x13 0000006d00017cc1  x14 0000006d00017cc1  x15 0000000000000000
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x16 000000769ee943f0  x17 00000079fadf481c  x18 00000079fe3ec000  x19 0000007fee274bc8
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x20 00000000000000c4  x21 00000079fd38cfc0  x22 000000769ee8a720  x23 000000769eea5000
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x24 000000000005a234  x25 0000007691ce4340  x26 000000769eea5c70  x27 00000079fd38cfc0
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      x28 0000007fee2752c8  x29 000000769eea6000
+2026-07-13 17:19:46.679 23838-23838 DEBUG                   pid-23838                            A      lr  000000769ec889d0  sp  0000007fee2746e0  pc  000000769ec889dc  pst 0000000080000000
+2026-07-13 17:19:46.762  4497-4497  StateManager            net.oneplus.launcher                 D  onAnimationEnd# set currentAnim to empty.
+2026-07-13 17:19:46.762  4497-4497  BaseActivity            net.oneplus.launcher                 D  clearForceInvisibleFlag add flag = 2, currentFlag = 0
+2026-07-13 17:19:46.763  4497-4497  BaseActivity            net.oneplus.launcher                 D  Showing call stack: 
+                                                                                                        [BaseActivity] QuickstepAppTransitionManagerImpl.java, onAnimationEnd, line: 164
+2026-07-13 17:19:46.855 23838-23838 DEBUG                   pid-23838                            A  backtrace:
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #00 pc 00000000009089dc  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/base.apk!libflutter.so (offset 0x50e000) (BuildId: 9f490a28849fd415f77ad9165383b441bf3cd3bc)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #01 pc 0000000000a55e60  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/base.apk!libflutter.so (offset 0x50e000) (BuildId: 9f490a28849fd415f77ad9165383b441bf3cd3bc)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #02 pc 00000000008ce82c  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/base.apk!libflutter.so (offset 0x50e000) (BuildId: 9f490a28849fd415f77ad9165383b441bf3cd3bc)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #03 pc 00000000004cb634  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/base.apk!libflutter.so (offset 0x50e000) (BuildId: 9f490a28849fd415f77ad9165383b441bf3cd3bc)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #04 pc 00000000000050a8  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/oat/arm64/base.odex (art_jni_trampoline+152)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #05 pc 0000000000133564  /apex/com.android.art/lib64/libart.so (art_quick_invoke_stub+548) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #06 pc 00000000001a8a78  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+200) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #07 pc 00000000003185d8  /apex/com.android.art/lib64/libart.so (art::interpreter::ArtInterpreterToCompiledCodeBridge(art::Thread*, art::ArtMethod*, art::ShadowFrame*, unsigned short, art::JValue*)+376) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #08 pc 000000000030e904  /apex/com.android.art/lib64/libart.so (bool art::interpreter::DoCall<false, false>(art::ArtMethod*, art::Thread*, art::ShadowFrame&, art::Instruction const*, unsigned short, art::JValue*)+996) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #09 pc 000000000067f370  /apex/com.android.art/lib64/libart.so (MterpInvokeDirect+576) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #10 pc 000000000012d914  /apex/com.android.art/lib64/libart.so (mterp_op_invoke_direct+20) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #11 pc 0000000000033bfc  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/oat/arm64/base.vdex (io.flutter.embedding.engine.FlutterJNI.performNativeAttach)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #12 pc 00000000006839d8  /apex/com.android.art/lib64/libart.so (MterpInvokeVirtualQuick+1344) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #13 pc 0000000000131594  /apex/com.android.art/lib64/libart.so (mterp_op_invoke_virtual_quick+20) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #14 pc 0000000000033dfe  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/oat/arm64/base.vdex (io.flutter.embedding.engine.FlutterJNI.attachToNative+30)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #15 pc 00000000006839d8  /apex/com.android.art/lib64/libart.so (MterpInvokeVirtualQuick+1344) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #16 pc 0000000000131594  /apex/com.android.art/lib64/libart.so (mterp_op_invoke_virtual_quick+20) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #17 pc 0000000000031fa8  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/oat/arm64/base.vdex (f0.c.<init>+568)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #18 pc 0000000000682928  /apex/com.android.art/lib64/libart.so (MterpInvokeDirectRange+852) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #19 pc 000000000012dc14  /apex/com.android.art/lib64/libart.so (mterp_op_invoke_direct_range+20) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #20 pc 0000000000031c40  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/oat/arm64/base.vdex (f0.j.a+128)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #21 pc 00000000006839d8  /apex/com.android.art/lib64/libart.so (MterpInvokeVirtualQuick+1344) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #22 pc 0000000000131594  /apex/com.android.art/lib64/libart.so (mterp_op_invoke_virtual_quick+20) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #23 pc 0000000000026f4c  /data/app/~~oAZDLzgJDwXCTz2DOOJGIw==/com.example.testapp-aED4wV5uVUp1-Gk6kpGInw==/oat/arm64/base.vdex (e0.f.onCreate+1488)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #24 pc 0000000000305f00  /apex/com.android.art/lib64/libart.so (art::interpreter::Execute(art::Thread*, art::CodeItemDataAccessor const&, art::ShadowFrame&, art::JValue, bool, bool) (.llvm.7972480776628613073)+268) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #25 pc 000000000066b9fc  /apex/com.android.art/lib64/libart.so (artQuickToInterpreterBridge+780) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #26 pc 000000000013cff8  /apex/com.android.art/lib64/libart.so (art_quick_to_interpreter_bridge+88) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #27 pc 00000000005d17e0  /system/framework/arm64/boot-framework.oat (android.app.Activity.performCreate+576) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #28 pc 000000000032d180  /system/framework/arm64/boot-framework.oat (android.app.Instrumentation.callActivityOnCreate+80) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #29 pc 00000000004105cc  /system/framework/arm64/boot-framework.oat (android.app.ActivityThread.performLaunchActivity+3388) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #30 pc 0000000000417a20  /system/framework/arm64/boot-framework.oat (android.app.ActivityThread.handleLaunchActivity+752) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #31 pc 00000000005de8a4  /system/framework/arm64/boot-framework.oat (android.app.servertransaction.LaunchActivityItem.execute+404) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #32 pc 000000000035a8e0  /system/framework/arm64/boot-framework.oat (android.app.servertransaction.TransactionExecutor.executeCallbacks+560) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #33 pc 000000000035a630  /system/framework/arm64/boot-framework.oat (android.app.servertransaction.TransactionExecutor.execute+752) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #34 pc 00000000003fa7ac  /system/framework/arm64/boot-framework.oat (android.app.ActivityThread$H.handleMessage+684) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #35 pc 0000000000651444  /system/framework/arm64/boot-framework.oat (android.os.Handler.dispatchMessage+180) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #36 pc 00000000006549a4  /system/framework/arm64/boot-framework.oat (android.os.Looper.loop+1668) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #37 pc 000000000040f560  /system/framework/arm64/boot-framework.oat (android.app.ActivityThread.main+752) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #38 pc 00000000001337e8  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+568) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #39 pc 00000000001a8a94  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+228) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #40 pc 0000000000555e64  /apex/com.android.art/lib64/libart.so (art::InvokeMethod(art::ScopedObjectAccessAlreadyRunnable const&, _jobject*, _jobject*, _jobject*, unsigned long)+1364) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #41 pc 00000000004d5548  /apex/com.android.art/lib64/libart.so (art::Method_invoke(_JNIEnv*, _jobject*, _jobject*, _jobjectArray*)+52) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #42 pc 000000000008a6f4  /apex/com.android.art/javalib/arm64/boot.oat (art_jni_trampoline+180) (BuildId: f3abbf7f7b16d75544b33437039cf4d7fc3bf37d)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #43 pc 00000000008d2318  /system/framework/arm64/boot-framework.oat (com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run+136) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #44 pc 00000000008dab00  /system/framework/arm64/boot-framework.oat (com.android.internal.os.ZygoteInit.main+2480) (BuildId: 6762948bf3c5a80febff61843b589b62c127229a)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #45 pc 00000000001337e8  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+568) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #46 pc 00000000001a8a94  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+228) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #47 pc 00000000005548a0  /apex/com.android.art/lib64/libart.so (art::JValue art::InvokeWithVarArgs<art::ArtMethod*>(art::ScopedObjectAccessAlreadyRunnable const&, _jobject*, art::ArtMethod*, std::__va_list)+448) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #48 pc 0000000000554d54  /apex/com.android.art/lib64/libart.so (art::JValue art::InvokeWithVarArgs<_jmethodID*>(art::ScopedObjectAccessAlreadyRunnable const&, _jobject*, _jmethodID*, std::__va_list)+92) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #49 pc 0000000000438e74  /apex/com.android.art/lib64/libart.so (art::JNI<true>::CallStaticVoidMethodV(_JNIEnv*, _jclass*, _jmethodID*, std::__va_list)+656) (BuildId: 32cda5ceec1e68666841a6ebde60d2e1)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #50 pc 000000000009b424  /system/lib64/libandroid_runtime.so (_JNIEnv::CallStaticVoidMethod(_jclass*, _jmethodID*, ...)+124) (BuildId: 9d616a3ce4d24252db194ab312c4a141)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #51 pc 00000000000a3814  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::start(char const*, android::Vector<android::String8> const&, bool)+836) (BuildId: 9d616a3ce4d24252db194ab312c4a141)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #52 pc 0000000000003674  /system/bin/app_process64 (main+1580) (BuildId: 877d617e6836814ff828a92ca826a70e)
+2026-07-13 17:19:46.856 23838-23838 DEBUG                   pid-23838                            A        #53 pc 00000000000499e4  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+108) (BuildId: 07fbaeed7b7a19203975f06be6f1d5ef)
+2026-07-13 17:19:46.880  1634-1754  AlarmManager            system_server                        W  Unrecognized alarm listener com.android.server.OpPowerControllerService$tsu@29945c4
+2026-07-13 17:19:46.881  2448-2448  KeyguardUpdateMonitor   com.android.systemui                 D  received broadcast android.intent.action.BATTERY_CHANGED
+2026-07-13 17:19:46.881  2448-2448  OpUtils                 com.android.systemui                 I  isSupportWarpCharging:false
+2026-07-13 17:19:46.881  2448-2448  KeyguardUpdateMonitor   com.android.systemui                 D  pdCharge false, chargingstatus 0, fastcharge:0
+2026-07-13 17:19:46.881  2448-2448  OpUtils                 com.android.systemui                 I  isSupportWarpCharging:false
+2026-07-13 17:19:46.881  2448-2448  OpSWarpChargingView     com.android.systemui                 D  level is same as latest one [88]
+2026-07-13 17:19:46.881  3022-3022  QtiCarrierConfigHelper  org.codeaurora.ims                   D  WARNING, no carrier configs on phone Id: 0
+2026-07-13 17:19:46.893  1634-1736  OemSceneMo...ivityStack system_server                        D  [scene] handleEvaluateGameMode enabled: false
+2026-07-13 17:19:46.894  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/system/rading_mode_status_auto
+2026-07-13 17:19:46.895  2375-2605  OIMC                    com.oneplus.coreservice              I  notified , mode ColorReadMode changeTo 2
+2026-07-13 17:19:46.895  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  handleMessage:   MODE_EXIT, arg1: 0, arg2: 0, obj: com.oneplus.server.oimc.gwy@d814b1c
+2026-07-13 17:19:46.895  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  The mode: ColorReadMode is not entered
+2026-07-13 17:19:46.895  2375-2605  OIMC                    com.oneplus.coreservice              I  notified , mode ReadMode changeTo 2
+2026-07-13 17:19:46.895  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  handleMessage:   MODE_EXIT, arg1: 0, arg2: 0, obj: com.oneplus.server.oimc.gwy@897b325
+2026-07-13 17:19:46.895  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  The mode: ReadMode is not entered
+2026-07-13 17:19:46.895  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/system/rading_mode_status_auto
+2026-07-13 17:19:46.933  3069-3069  DeviceStatisticsService com...m.qti.devicestatisticsservice  D  chargerType=2 batteryLevel=88 totalBatteryCapacity=3199500
+2026-07-13 17:19:47.018   859-859   tombstoned              tombstoned                           E  Tombstone written to: /data/tombstones/tombstone_29
+2026-07-13 17:19:47.019  1634-23841 ActivityTaskManager     system_server                        W    Force finishing activity com.example.testapp/.MainActivity
+2026-07-13 17:19:47.019  1634-23842 DropBoxManagerService   system_server                        I  add tag=data_app_native_crash isTagEnabled=true flags=0x2
+2026-07-13 17:19:47.019  1634-1800  BootReceiver            system_server                        I  Copying /data/tombstones/tombstone_29 to DropBox (SYSTEM_TOMBSTONE)
+2026-07-13 17:19:47.020  1634-1800  DropBoxManagerService   system_server                        I  add tag=SYSTEM_TOMBSTONE isTagEnabled=true flags=0x2
+2026-07-13 17:19:47.020  1634-23841 OpQuickReply            system_server                        D  setQuickReplyResumed focusedApp ActivityRecord{1a5865b u0 net.oneplus.launcher/.Launcher t3187} pkgName net.oneplus.launcher
+2026-07-13 17:19:47.020  1634-23842 FrameworkEventCollector system_server                        D  recordAppIssue PN: com.example.testapp
+2026-07-13 17:19:47.021  1634-2329  gwy                     system_server                        D  OS Event: crash
+2026-07-13 17:19:47.028  1634-23841 ActivityTrigger         system_server                        D  ActivityTrigger activityPauseTrigger 
+2026-07-13 17:19:47.031  1634-23842 DropBoxManagerService   system_server                        D  Copy /data/system/dropbox/data_app_native_crash@2026-07-13-17_19_47_030.txt.gz to /data/oem_log/
+2026-07-13 17:19:47.035  4417-5658  OPReportService         com.oneplus.opbugreportlite          D  addMonitorFolder onEvent path=data_app_native_crash@2026-07-13-17_19_47_030.txt.gz, event:8
+2026-07-13 17:19:47.035  1634-1800  DropBoxManagerService   system_server                        D  Copy /data/system/dropbox/SYSTEM_TOMBSTONE@2026-07-13-17_19_47_034.txt.gz to /data/oem_log/
+2026-07-13 17:19:47.036  1634-1749  BroadcastQueue          system_server                        W  Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+2026-07-13 17:19:47.036  4417-5658  OPReportService         com.oneplus.opbugreportlite          D  addMonitorFolder onEvent path=SYSTEM_TOMBSTONE@2026-07-13-17_19_47_034.txt.gz, event:8
+2026-07-13 17:19:47.051  1634-1634  xne                     system_server                        D  Event success
+2026-07-13 17:19:47.041  1634-1749  BroadcastQueue          system_server                        W  Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+2026-07-13 17:19:47.057  1634-9445  ActivityManager         system_server                        I  Process com.example.testapp (pid 12313) has died: prcp TOP 
+2026-07-13 17:19:47.057  1634-9445  gwy                     system_server                        D  OS Event: memory
+2026-07-13 17:19:47.058  1634-9445  ProcessStats            system_server                        W  setState index out of bounds. index: -1 length: 20
+2026-07-13 17:19:47.058   871-871   Zygote                  pid-871                              I  Process 12313 exited due to signal 11 (Segmentation fault)
+2026-07-13 17:19:47.062  1634-2323  skia                    system_server                        D  got procName system_server for pid 1634
+2026-07-13 17:19:47.058  1634-9445  ProcessStats            system_server                        W  setState index out of bounds. index: -1 length: 20
+2026-07-13 17:19:47.064  1634-9445  HwuiBoostF...geListener system_server                        E  Exception : file not exits :/sys/module/houston/parameters/hwui_boost_enable
+2026-07-13 17:19:47.064  1634-9445  OpColorDisplayService   system_server                        D  frontPackageChanged: net.oneplus.launcher
+2026-07-13 17:19:47.064  1634-9445  OpColorDisplayService   system_server                        D  lpackageName: com.example.testapp
+2026-07-13 17:19:47.064  1634-1878  DisplayPowerController  system_server                        I  useProximityForceSuspend = false
+2026-07-13 17:19:47.064  1634-9445  OpProximityController   system_server                        D  noteFrontPackageChanged pkg:net.oneplus.launcher uid:10164 lpkg:com.example.testapp luid:11516
+2026-07-13 17:19:47.064  1634-1878  RampAnimator            system_server                        I  target:0.24207628 rate:0.2352941 mCurrentValue:0.24207628 mTargetValue:0.24207628
+2026-07-13 17:19:47.065  1634-9445  OemSceneMo...ivityStack system_server                        D  [scene] evaluateGameModes :  gameMsg.arg1=0 gameMsg.arg2=1
+2026-07-13 17:19:47.065  1634-9445  OpQuickReply            system_server                        D  setQuickReplyResumed focusedApp ActivityRecord{1a5865b u0 net.oneplus.launcher/.Launcher t3187} pkgName net.oneplus.launcher
+2026-07-13 17:19:47.069  1634-1737  WindowManager           system_server                        W  Cannot find window which accessibility connection is added to
+2026-07-13 17:19:47.070  1634-1737  WindowManager           system_server                        W  Failed looking up window session=Session{7e6a8a0 1634:1000} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:5814 com.android.server.wm.WindowManagerService.removeWindow:2065 com.android.server.wm.Session.remove:193 
+2026-07-13 17:19:47.072  1634-1751  libprocessgroup         system_server                        I  Successfully killed process cgroup uid 11516 pid 12313 in 15ms
+2026-07-13 17:19:47.079  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-13 17:19:47.086  1634-1736  Compatibil...geReporter system_server                        D  Compat change id reported: 135634846; UID 10186; state: DISABLED
+2026-07-13 17:19:47.086  1634-2323  skia                    system_server                        D  got procName system_server for pid 1634
+2026-07-13 17:19:47.086  1634-1750  Compatibil...geReporter system_server                        D  Compat change id reported: 143937733; UID 10186; state: DISABLED
+2026-07-13 17:19:47.086 19743-23846 DropBoxUtil             com.google.android.gms.persistent    I  (REDACTED) Reading dropbox entry with tag %s and timestamp %d
+2026-07-13 17:19:47.087  1634-1634  xne                     system_server                        D  Event success
+2026-07-13 17:19:47.090  4497-4497  neplus.launche          net.oneplus.launcher                 E  Invalid ID 0x000000fb.
+2026-07-13 17:19:47.090  4497-4497  neplus.launche          net.oneplus.launcher                 E  Invalid ID 0x00000006.
+2026-07-13 17:19:47.090  4497-4497  neplus.launche          net.oneplus.launcher                 E  Invalid ID 0x00000006.
+2026-07-13 17:19:47.092 19743-23846 DropBoxUtil             com.google.android.gms.persistent    I  (REDACTED) Reading dropbox entry with tag %s and timestamp %d
+2026-07-13 17:19:47.108  4497-4497  BaseActivity            net.oneplus.launcher                 D  onResume# who: Launcher, taskId: 3187
+2026-07-13 17:19:47.109  4497-4836  Launcher                net.oneplus.launcher                 D  onResume# isInteractive=true
+2026-07-13 17:19:47.109  4497-4497  QuickPage               net.oneplus.launcher                 D  updateOnResume, count:5
+2026-07-13 17:19:47.110  4497-4497  ShelfLauncherCallbacks  net.oneplus.launcher                 I  onResume
+2026-07-13 17:19:47.110  4497-4497  Launcher.Workspace      net.oneplus.launcher                 D  DynamicIcon Workspace updateCurrentPageDynamicIconState success
+2026-07-13 17:19:47.110  4497-4497  Launcher                net.oneplus.launcher                 D  onResume# hashcode: 263018263, resource folder: values-sw400dp-xxhdpi, version: code: 30116, name: 5.1.16, Themes.getThemeModeCache = 1, realSize = Point(1080, 2340), size = Point(1080, 2218); isHideIconLabelEnable: false
+2026-07-13 17:19:47.110  4497-4497  SystemUiController      net.oneplus.launcher                 D  setNavigibationBarBackground = false , mTranslucentNavigation: false , force: false
+2026-07-13 17:19:47.111  4497-4834  InstallShortcutReceiver net.oneplus.launcher                 D  MSG_FLUSH_QUEUE string = null
+2026-07-13 17:19:47.111  4497-4497  RecentsView             net.oneplus.launcher                 D  onTaskRemoved taskId = 3516
+2026-07-13 17:19:47.111  4497-4497  RecentsView             net.oneplus.launcher                 D  onTaskRemoved taskId = 3516
+2026-07-13 17:19:47.111   871-871   Zygote                  pid-871                              D  Forked child process 23847
+2026-07-13 17:19:47.114  4497-4497  WallpaperUtils          net.oneplus.launcher                 D  checkPeekWallpaperPermission# permission granted: false
+2026-07-13 17:19:47.116  4497-4497  DecorView               net.oneplus.launcher                 D  onWindowFocusChangedFromViewRoot hasFocus: true, DecorView@2e69d56[Launcher]
+2026-07-13 17:19:47.116  4497-4497  ViewRootImpl[Launcher]  net.oneplus.launcher                 D  windowFocusChanged hasFocus=true inTouchMode=true
+2026-07-13 17:19:47.116  1634-1750  ActivityManager         system_server                        I  Start proc 23847:com.oneplus.dialer/u0a186 for qcomUXE
+2026-07-13 17:19:47.118  4497-4497  Launcher                net.oneplus.launcher                 D  onWindowFocusChanged# hasFocus: true
+2026-07-13 17:19:47.118  4497-4497  resumeflow              net.oneplus.launcher                 D  false
+2026-07-13 17:19:47.118  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-13 17:19:47.120  2644-2644  GoogleInpu...hodService com...gle.android.inputmethod.latin  I  GoogleInputMethodService.onFinishInput():2276 
+2026-07-13 17:19:47.121  2644-22909 Module                  com...gle.android.inputmethod.latin  I  DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():129 repeatCheckTimes = 0, locked = false
+2026-07-13 17:19:47.121  2644-2644  GoogleInpu...hodService com...gle.android.inputmethod.latin  I  GoogleInputMethodService.onStartInput():1460 onStartInput(EditorInfo{EditorInfo{packageName=net.oneplus.launcher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+2026-07-13 17:19:47.121  2644-2644  LatinIMEBase            com...gle.android.inputmethod.latin  W  LatinIMEBase.updateInputViewCoverNavigation():322 Null input view, cannot update padding!
+2026-07-13 17:19:47.122  2644-22911 Module                  com...gle.android.inputmethod.latin  I  DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():129 repeatCheckTimes = 1, locked = false
+2026-07-13 17:19:47.126 23847-23847 .oneplus.diale          pid-23847                            E  Unknown bits set in runtime_flags: 0x800000
+2026-07-13 17:19:47.131 23847-23847 .oneplus.diale          pid-23847                            E  Not starting debugger since process cannot load the jdwp agent.
+2026-07-13 17:19:47.152 23847-23847 ApplicationLoaders      pid-23847                            D  Returning zygote-cached class loader: /system/framework/android.test.base.jar
+2026-07-13 17:19:47.161 23847-23847 .oneplus.diale          pid-23847                            I  The ClassLoaderContext is a special shared library.
+2026-07-13 17:19:47.166 23847-23847 .oneplus.diale          pid-23847                            I  The ClassLoaderContext is a special shared library.
+2026-07-13 17:19:47.193 23847-23847 Perf                    pid-23847                            I  Connecting to perf service.
+2026-07-13 17:19:47.199 23847-23847 .oneplus.diale          pid-23847                            I  [GL_OOM] ClampGrowthLimit 268435456
+2026-07-13 17:19:47.200 23847-23847 NetworkSecurityConfig   pid-23847                            D  No Network Security Config specified, using platform default
+2026-07-13 17:19:47.200 23847-23847 NetworkSecurityConfig   pid-23847                            D  No Network Security Config specified, using platform default
+2026-07-13 17:19:47.215  2398-2415  OPConfig:ConfigProvider com.oneplus.config                   V  Module:OnePlusFontConfig
+2026-07-13 17:19:47.216 23847-23847 Config:Gra...FontConfig pid-23847                            E  Index 0 requested, with a size of 0
+2026-07-13 17:19:47.217 23847-23847 OPInCallApp             pid-23847                            I  init
+2026-07-13 17:19:47.226 23847-23847 Dialer                  pid-23847                            I  CountryCodeSuggestUtils - upgrade null
+2026-07-13 17:19:47.228 23847-23847 Dialer                  pid-23847                            I  CallLogFramework.registerContentObservers - enter
+2026-07-13 17:19:47.228 23847-23847 Dialer                  pid-23847                            I  CallLogFramework.registerContentObservers - not registering content observers
+2026-07-13 17:19:47.234 23847-23847 Dialer                  pid-23847                            W  CountryDetector.registerForLocationUpdates - no location permissions, not registering for location updates
+2026-07-13 17:19:47.235 23847-23847 CountryDetector         pid-23847                            D  getNetworkBasedCountryIso countryIso = vn
+2026-07-13 17:19:47.236 23847-23847 Dialer                  pid-23847                            I  ContactPhotoManagerImpl.ContactPhotoManagerImpl - cache adj: 1.0
+2026-07-13 17:19:47.236 23847-23847 OPDialerDataCache       pid-23847                            D  initDatas initDatas done
+2026-07-13 17:19:47.236 23847-23847 OPDialerDataCache       pid-23847                            D  initDatas: mEndCallButtonShowWifiIcon = false
+2026-07-13 17:19:47.237 23847-23847 OPDialerDataCache       pid-23847                            D  mHistoryDialBack init = false
+2026-07-13 17:19:47.239 23847-23847 Dialer                  pid-23847                            I  OPInCallApp - bootComplete
+2026-07-13 17:19:47.239 23847-23847 DLC                     pid-23847                            D  DLC lTMode == 1 nTMode == 1
+2026-07-13 17:19:47.239 23847-23878 OPDialerDataCache       pid-23847                            D  initDatas thread done
+2026-07-13 17:19:47.241  2398-2415  OPConfig:ConfigProvider com.oneplus.config                   V  Module:ROM_APP_OPDialer
+2026-07-13 17:19:47.242 23847-23881 Config:Gra...P_OPDialer pid-23847                            E  Index 0 requested, with a size of 0
+2026-07-13 17:19:47.242 23847-23881 DuoOneline              pid-23847                            D  load online config: null
+2026-07-13 17:19:47.245 23847-23882 AccountTypeManager      pid-23847                            D  Registering external account type=com.google.android.apps.tachyon, packageName=com.google.android.apps.tachyon
+2026-07-13 17:19:47.246 23847-23879 OPYuloreHelperImpl      pid-23847                            I  OPYuloreHelperImpl created
+2026-07-13 17:19:47.248 23847-23879 OPYuloreHelperImpl      pid-23847                            D  custFlag: 0
+2026-07-13 17:19:47.248 23847-23879 OPYuloreHelperImpl      pid-23847                            D  check package get packageInfo: packageName = com.recognize.number
+2026-07-13 17:19:47.248 23847-23879 OPYuloreHelperImpl      pid-23847                            D  check package error.
+2026-07-13 17:19:47.248 23847-23879 System.err              pid-23847                            W  android.content.pm.PackageManager$NameNotFoundException: com.recognize.number
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at android.app.ApplicationPackageManager.getApplicationInfoAsUser(ApplicationPackageManager.java:428)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at android.app.ApplicationPackageManager.getApplicationInfo(ApplicationPackageManager.java:417)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at com.oneplus.superyellowpage.OPYuloreHelperImpl.isApkInstalled(SourceFile:2)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at com.oneplus.superyellowpage.OPYuloreHelperImpl.init(SourceFile:5)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at com.oneplus.superyellowpage.OPYuloreUtil.init(SourceFile:10)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at a.c.d.u0.b$a.run(SourceFile:12)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at android.os.Handler.handleCallback(Handler.java:938)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at android.os.Handler.dispatchMessage(Handler.java:99)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at android.os.Looper.loop(Looper.java:233)
+2026-07-13 17:19:47.249 23847-23879 System.err              pid-23847                            W  	at android.os.HandlerThread.run(HandlerThread.java:67)
+2026-07-13 17:19:47.249 23847-23879 OPYuloreHelperImpl      pid-23847                            D  init
+2026-07-13 17:19:47.250 23847-23879 DialerSettings          pid-23847                            D  key: oneplus.contacts.DISPLAY_ORDER value: 1
+2026-07-13 17:19:47.250 23847-23879 DialerSettings          pid-23847                            D  key: oneplus.contacts.SORT_ORDER value: 1
+2026-07-13 17:19:47.250 23847-23879 DialerSettings          pid-23847                            D  key: oneplus.contacts.HAS_PHONE_NUMBER value: 0
+2026-07-13 17:19:47.252 23847-23879 OPContactL...rollerImpl pid-23847                            I  construct OPContactListFilterControllerImpl
+2026-07-13 17:19:47.253 23847-23882 AccountTypeManager      pid-23847                            D  Registering 1 extension packages
+2026-07-13 17:19:47.253 23847-23879 DialerFilter            pid-23847                            D  key: oneplus.contacts.filter.type value: -1
+2026-07-13 17:19:47.253 23847-23879 DialerFilter            pid-23847                            D  restoreFromPreferences filterType = -1
+2026-07-13 17:19:47.253 23847-23879 DialerFilter            pid-23847                            D  restoreFromPreferences return null
+2026-07-13 17:19:47.253 23847-23879 DialerFilter            pid-23847                            D  restoreDefaultPreferences, filter = null
+2026-07-13 17:19:47.253 23847-23879 DialerFilter            pid-23847                            D  restoreDefaultPreferences, filter is null and update filter as [filter type: -2 (FILTER_TYPE_ALL_ACCOUNTS), icon: null]
+2026-07-13 17:19:47.253 23847-23879 OPContactL...rollerImpl pid-23847                            I  checkFilterValidity mFilter = all_accounts
+2026-07-13 17:19:47.255 23847-23879 QC_NV_ITEMS             pid-23847                            V  QcNvItems instance created.
+2026-07-13 17:19:47.256 23847-23879 QC_RIL_OEM_HOOK         pid-23847                            D  Starting QcrilMsgTunnel Service
+2026-07-13 17:19:47.258 23847-23879 QC_RIL_OEM_HOOK         pid-23847                            D  Attempt to bind service returned with: true
+2026-07-13 17:19:47.259 23847-23879 QC_RIL_OEM_HOOK         pid-23847                            D  Registering for intent ACTION_UNSOL_RESPONSE_OEM_HOOK_RAW
+2026-07-13 17:19:47.267 23847-23882 ExternalAccountType     pid-23847                            E  Unsupported attribute readOnly
+2026-07-13 17:19:47.270 23847-23882 AccountTypeManager      pid-23847                            D  Registering extension package account type=com.google, dataSet=plus, packageName=com.google.android.gms
+2026-07-13 17:19:47.271 23847-23882 AccountTypeManager      pid-23847                            I  Loaded meta-data for 4 account types, 2 accounts in 28ms(wall) 24ms(cpu)
+2026-07-13 17:19:47.297 23847-23847 OPEmptyPageView         pid-23847                            I  initView !!
+2026-07-13 17:19:47.300 23847-23847 OPEmptyPageView         pid-23847                            I  initView !!
+2026-07-13 17:19:47.302 23847-23847 OPDialerLayoutCache     pid-23847                            I  onCreate() - mOrientation: 1
+2026-07-13 17:19:47.307 23847-23847 Dialer                  pid-23847                            I  RecorderUtils - don't hasRecorderRWPermission READ
+2026-07-13 17:19:47.308 23847-23847 Dialer                  pid-23847                            I  RecorderFileManager - registerContentObserver mContentObserver: null
+2026-07-13 17:19:47.308  1634-5817  Compatibil...geReporter system_server                        D  Compat change id reported: 135634846; UID 10090; state: DISABLED
+2026-07-13 17:19:47.309  1634-1750  Compatibil...geReporter system_server                        D  Compat change id reported: 143937733; UID 10090; state: ENABLED
+2026-07-13 17:19:47.309 23847-23847 QC_RIL_OEM_HOOK         pid-23847                            D  QcrilMsgTunnelService Connected Successfully (onServiceConnected)
+2026-07-13 17:19:47.309 23847-23847 QC_RIL_OEM_HOOK         pid-23847                            D  Calling onQcRilHookReady callback
+2026-07-13 17:19:47.309 23847-23847 QC_RIL_OEM_HOOK         pid-23847                            E  Notifying registrants: OnServiceConnect
+2026-07-13 17:19:47.311 23652-23671 Intercepte...ogProvider android.process.acore                D  call oneplus InterceptedCallLogProvider provider,method:migrate_old_intercepted_calls_from_security,caller:com.oneplus.dialer, isSystemApp = true
+2026-07-13 17:19:47.312 23652-23671 Intercepte...tionHelper android.process.acore                I  The migration has been completed before, skip this step
+2026-07-13 17:19:47.315 23652-23671 Intercepte...ogProvider android.process.acore                I  delete Uri = content://com.oneplus.communication.interception.InterceptedCallLogProvider/intercepted_calls, match = 20
+2026-07-13 17:19:47.316 23652-23671 InterceptionDBHelper    android.process.acore                I  constructor
+2026-07-13 17:19:47.316 23652-23671 sqlite3_android         android.process.acore                E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-13 17:19:47.317 23652-23671 Intercepte...ogProvider android.process.acore                E  deleted failed!
+2026-07-13 17:19:47.325   871-871   Zygote                  pid-871                              D  Forked child process 23886
+2026-07-13 17:19:47.327  1634-1750  ActivityManager         system_server                        I  Start proc 23886:com.oneplus.communication.data/u0a90 for content provider {com.oneplus.communication.data/com.oneplus.communication.data.ScanProvider}
+2026-07-13 17:19:47.331 23886-23886 munication.dat          pid-23886                            E  Unknown bits set in runtime_flags: 0x800000
+2026-07-13 17:19:47.334 23886-23886 munication.dat          pid-23886                            E  Not starting debugger since process cannot load the jdwp agent.
+2026-07-13 17:19:47.367 23886-23886 Perf                    pid-23886                            I  Connecting to perf service.
+2026-07-13 17:19:47.372 23886-23886 munication.dat          pid-23886                            I  [GL_OOM] ClampGrowthLimit 268435456
+2026-07-13 17:19:47.373 23886-23886 NetworkSecurityConfig   pid-23886                            D  No Network Security Config specified, using platform default
+2026-07-13 17:19:47.373 23886-23886 NetworkSecurityConfig   pid-23886                            D  No Network Security Config specified, using platform default
+2026-07-13 17:19:47.374 23886-23886 ScanProvider            pid-23886                            D  startScan sync = false
+2026-07-13 17:19:47.375 23886-23908 ScanProvider            pid-23886                            D  start Scan
+2026-07-13 17:19:47.379 23886-23908 sqlite3_android         pid-23886                            E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-13 17:19:47.382 23886-23908 ScanProvider            pid-23886                            D  end Scan
+2026-07-13 17:19:47.383 23847-23847 Dialer                  pid-23847                            I  RecorderFileManager - recordFiles.size(): 0
+2026-07-13 17:19:47.383 23847-23847 Dialer                  pid-23847                            I  RecorderFileManager - mOwnQueryTask.onQueryComplete 0
+2026-07-13 17:19:47.383  2398-2415  OPConfig:ConfigProvider com.oneplus.config                   V  Module:OnePlusFontConfig
+2026-07-13 17:19:47.384 23886-23886 Config:Gra...FontConfig pid-23886                            E  Index 0 requested, with a size of 0
+2026-07-13 17:19:47.520  1634-1736  ActivityTaskManager     system_server                        W  Activity top resumed state loss timeout for ActivityRecord{3f21c54 u0 com.example.testapp/.MainActivity t-1 f}}
+2026-07-13 17:19:47.566  1634-1736  OemSceneMo...ivityStack system_server                        D  [scene] handleEvaluateGameMode enabled: false
+2026-07-13 17:19:47.567  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/system/rading_mode_status_auto
+2026-07-13 17:19:47.567  2375-2605  OIMC                    com.oneplus.coreservice              I  notified , mode ColorReadMode changeTo 2
+2026-07-13 17:19:47.567  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  handleMessage:   MODE_EXIT, arg1: 0, arg2: 0, obj: com.oneplus.server.oimc.gwy@4cabcfa
+2026-07-13 17:19:47.567  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  The mode: ColorReadMode is not entered
+2026-07-13 17:19:47.567  2375-2605  OIMC                    com.oneplus.coreservice              I  notified , mode ReadMode changeTo 2
+2026-07-13 17:19:47.568  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  handleMessage:   MODE_EXIT, arg1: 0, arg2: 0, obj: com.oneplus.server.oimc.gwy@342d2ab
+2026-07-13 17:19:47.568  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  The mode: ReadMode is not entered
+2026-07-13 17:19:47.568  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/system/rading_mode_status_auto
+2026-07-13 17:19:48.250 23652-23671 sqlite3_android         android.process.acore                E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-13 17:19:48.251  1634-5817  ActivityManager         system_server                        D  kill pid:21187 processName:com.google.android.googlequicksearchbox:search reason:empty #31
+2026-07-13 17:19:48.251  1634-5817  ActivityManager         system_server                        I  Killing 21187:com.google.android.googlequicksearchbox:search/u0a134 (adj 999): empty #31
+2026-07-13 17:19:48.290  1634-9143  ConnectivityService     system_server                        D  ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=3901, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ], android.os.BinderProxy@78bf7cc)
+2026-07-13 17:19:48.290  1634-8329  ConnectivityService     system_server                        D  ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=3900, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ], android.os.BinderProxy@fe0da15)
+2026-07-13 17:19:48.290  1634-9445  ConnectivityService     system_server                        D  ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ LISTEN id=3902, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ], android.os.BinderProxy@66d712a)
+2026-07-13 17:19:48.290  1634-2240  ConnectivityService     system_server                        D  releasing NetworkRequest [ TRACK_DEFAULT id=3901, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ] (release request)
+2026-07-13 17:19:48.291  1634-2277  ProcessStats            system_server                        W  setState index out of bounds. index: -1 length: 20
+2026-07-13 17:19:48.291  1634-2240  ConnectivityService     system_server                        D  releasing NetworkRequest [ TRACK_DEFAULT id=3900, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ] (release request)
+2026-07-13 17:19:48.291  3107-3107  PhoneSwitc...stListener com.android.phone                    D  releaseNetworkFor NetworkRequest [ TRACK_DEFAULT id=3901, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ]
+2026-07-13 17:19:48.291  1634-2277  ProcessStats            system_server                        W  setState index out of bounds. index: -1 length: 20
+2026-07-13 17:19:48.291   871-871   Zygote                  pid-871                              I  Process 21187 exited due to signal 9 (Killed)
+2026-07-13 17:19:48.292  3107-3107  PhoneSwitc...stListener com.android.phone                    D  releaseNetworkFor NetworkRequest [ TRACK_DEFAULT id=3900, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10134 AdministratorUids: [] RequestorUid: 10134 RequestorPackageName: com.google.android.googlequicksearchbox] ]

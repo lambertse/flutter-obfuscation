@@ -1,5 +1,6 @@
 # Handover: Runtime Packer for a Flutter (Android) Release App
 
+
 **Audience:** Claude Code (implementation agent)
 **Type:** Self-protection / app-hardening. This is a *packer* for our **own** app — encrypt the Dart AOT snapshot at rest, decrypt it in-process at runtime via a `dlopen` hook. Not an attack tool; do not add anything that targets other apps or bypasses third-party protections.
 

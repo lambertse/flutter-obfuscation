@@ -1,0 +1,408 @@
+2026-07-14 10:02:23.785 19780-19780 BoundBrokerSvc          com.google.android.gms               D  onUnbind: Intent { act=com.google.android.gms.semanticlocationhistory.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.GmsApiService }
+2026-07-14 10:02:23.987  3967-4051  Finsky                  com.android.vending                  I  [19043] AIM: AppInfoManager-Perf > Destroying AppInfoManager ...
+2026-07-14 10:02:24.039  3967-4063  Finsky                  com.android.vending                  I  [19045] AIM: AppInfoManager-Perf > Destroying AppInfoManager ...
+2026-07-14 10:02:24.287  2448-2448  OpEdgeNavGestureHandler com.android.systemui                 I   mAllowNavGesture touch point is height than NavBarHeight.
+2026-07-14 10:02:24.288  4497-4497  DragController          net.oneplus.launcher                 D  onControllerInterceptTouchEvent ActionDown pos =977, 475
+2026-07-14 10:02:24.289  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-14 10:02:24.290  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-14 10:02:24.290  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-14 10:02:24.290  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=0
+2026-07-14 10:02:24.290  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-14 10:02:24.293  4497-4497  TouchInteractionService net.oneplus.launcher                 D  onInputEvent# ev: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=977.0, y[0]=475.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=166756997, downTime=166756997, deviceId=-1, source=0x1002, displayId=0 }
+2026-07-14 10:02:24.316  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-14 10:02:24.317  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-14 10:02:24.317  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=2
+2026-07-14 10:02:24.317  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-14 10:02:24.347  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-14 10:02:24.347  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-14 10:02:24.347  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=2
+2026-07-14 10:02:24.347  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-14 10:02:24.364  4497-4497  DeviceHelper            net.oneplus.launcher                 D  isIndiaSkuSupports: this= 18801 , is SKU: false
+2026-07-14 10:02:24.364  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: getViewDragState=0
+2026-07-14 10:02:24.364  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 I  onInterceptTouchEvent: isSearchMode=false, isOnFirstSearchPage=true, isTabShown=false, isOnPersonalTab=false, isMoveLeft=false, action=2
+2026-07-14 10:02:24.364  4497-4497  SlidingPaneLayout       net.oneplus.launcher                 D  onInterceptTouchEvent: false | false | false
+2026-07-14 10:02:24.410  4497-4497  DragController          net.oneplus.launcher                 D  onControllerInterceptTouchEvent ActionUp pos =977.0, 475.0
+2026-07-14 10:02:24.421  1634-7709  ActivityTaskManager     system_server                        I  START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity bnds=[844,319][1048,672]} from uid 10164 pid 4497
+2026-07-14 10:02:24.427  1634-7709  ANDR-PERF-JNI           system_server                        E  com_qualcomm_qtiperformance_native_perf_io_prefetch_start
+2026-07-14 10:02:24.428  1634-7709  ActivityTaskManager     system_server                        V  checkAndUpdateLocalList list: [com.android.chrome, com.autonavi.minimap, com.shuqiyuedu823.google, com.snapchat.android, com.google.android.youtube, com.amazon.avod.thirdpartyclient, com.google.android.apps.maps, com.tencent.qqlive, com.youku.phone, com.qiyi.video, com.duowan.kiwi, tv.danmaku.bili, com.google.android.calendar, com.lingdian.activity, local.pivot.pingmeter, com.whatsapp, com.netflix.mediaclient] UpdateDay: 3
+2026-07-14 10:02:24.433  1634-7709  ActivityTaskManager     system_server                        D  Updating New task bounds Rect(0, 0 - 0, 0)
+2026-07-14 10:02:24.435  1634-7709  ActivityTrigger         system_server                        D  ActivityTrigger activityPauseTrigger 
+2026-07-14 10:02:24.437  1634-2890  OPBF                    system_server                        D  setCGroupState():tofreeze=false, uid:11519 pkg:com.vkey.cloud.vkeyapp.sandbox --->>> ok reason:startActivityLocked name:com.example.vkey_voscloud_flutter.DevelopMainActivity callingPackage:net.oneplus.launcher
+2026-07-14 10:02:24.437  4497-4497  BaseDraggingActivity    net.oneplus.launcher                 D  startActivity bookkeeping intent = Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity bnds=[844,319][1048,672] }
+2026-07-14 10:02:24.437  4497-4497  Stats                   net.oneplus.launcher                 D  Intent.getPackage() is null. therefore try to get package name from componentName.getPackageName(): com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:24.437  4497-4497  Stats                   net.oneplus.launcher                 D  Intent.getPackage() is null. therefore try to get package name from componentName.getPackageName(): com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:24.437  4497-6138  Stats                   net.oneplus.launcher                 D  save stats in background ...
+2026-07-14 10:02:24.437  1040-1067  ANDR-IOP                vendor.qti.hardware.iop@2.0-service  E  io prefetch is disabled
+2026-07-14 10:02:24.438  4497-4497  ItemClickHandler        net.oneplus.launcher                 D  onClick app, allappsTransProgress = 0.0, tag = AppInfo(id=-1 type=APP container=-1 screen=-1 cell(-1,-1) span(1,1) minSpan(1,1) rank=0 user=UserHandle{0} title=Authenticator hidden=false dirty = false newInstallTag=null componentName=ComponentInfo{com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity} searchResult=null suggestionApp=null)
+2026-07-14 10:02:24.438  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/secure/reminder_exp_learning_time_elapsed
+2026-07-14 10:02:24.440  4497-4497  Launcher                net.oneplus.launcher                 D  onPause# hashcode: 263018263
+2026-07-14 10:02:24.440  4497-4834  WeatherProvider         net.oneplus.launcher                 I  un-subscribe the weather callback: 
+2026-07-14 10:02:24.441  4497-4497  ShelfLauncherCallbacks  net.oneplus.launcher                 I  onPause
+2026-07-14 10:02:24.441  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-14 10:02:24.441  1634-1736  OpRestartProcessManager system_server                        D  updateSelf :  com.vkey.cloud.vkeyapp.sandbox, size : 30
+2026-07-14 10:02:24.442  1634-9444  ActivityTaskManager     system_server                        I  The Process com.vkey.cloud.vkeyapp.sandbox Already Exists in BG. So sending its PID: 6209
+2026-07-14 10:02:24.443  4497-6498  sqlite3_android         net.oneplus.launcher                 E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.444  1634-9444  HwuiBoostF...geListener system_server                        E  Exception : file not exits :/sys/module/houston/parameters/hwui_boost_enable
+2026-07-14 10:02:24.444  1634-9444  OpColorDisplayService   system_server                        D  frontPackageChanged: com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:24.444  1634-9444  OpColorDisplayService   system_server                        D  lpackageName: net.oneplus.launcher
+2026-07-14 10:02:24.444  1634-1878  DisplayPowerController  system_server                        I  useProximityForceSuspend = false
+2026-07-14 10:02:24.444  1634-9444  OpProximityController   system_server                        D  noteFrontPackageChanged pkg:com.vkey.cloud.vkeyapp.sandbox uid:11519 lpkg:net.oneplus.launcher luid:10164
+2026-07-14 10:02:24.444  1634-1878  RampAnimator            system_server                        I  target:0.26289564 rate:0.2352941 mCurrentValue:0.26289564 mTargetValue:0.26289564
+2026-07-14 10:02:24.445  1634-9444  OemSceneMo...ivityStack system_server                        D  [scene] evaluateGameModes :  gameMsg.arg1=0 gameMsg.arg2=1
+2026-07-14 10:02:24.445  1634-2890  WifiService             system_server                        I  setHighPerfRestrict uid=11519 restrict=false callingUid=1000
+2026-07-14 10:02:24.446  1634-9444  OpQuickReply            system_server                        D  setQuickReplyResumed focusedApp ActivityRecord{e981bc6 u0 com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity t3525} pkgName com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:24.452  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-14 10:02:24.459  6209-6209  vkeyapp.sandbo          com.vkey.cloud.vkeyapp.sandbox       E  [frame_perf] perfboost open tb_ctl file failed, isApp[1], errno=No such file or directory
+2026-07-14 10:02:24.459 19780-19780 BoundBrokerSvc          com.google.android.gms               D  onBind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+2026-07-14 10:02:24.459 19780-19780 BoundBrokerSvc          com.google.android.gms               D  Loading bound service for intent: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+2026-07-14 10:02:24.460  1094-1158  DisplayIdentification   surfaceflinger                       W  Invalid EDID: falling back to serial number due to missing display name.
+2026-07-14 10:02:24.461  1094-1158  DisplayIdentification   surfaceflinger                       W  Invalid EDID: falling back to ASCII text due to missing serial number.
+2026-07-14 10:02:24.461  6209-6209  libprocessgroup         com.vkey.cloud.vkeyapp.sandbox       E  set_timerslack_ns write failed: Operation not permitted
+2026-07-14 10:02:24.464  4497-6498  sqlite3_android         net.oneplus.launcher                 E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.465  1686-1744  QMI_FW                  qcrild                               E  qmi_cci_get_ref: ref count increased 2
+2026-07-14 10:02:24.467  1686-1744  QMI_FW                  qcrild                               E  qmi_cci_get_ref: ref count increased 2
+2026-07-14 10:02:24.468  4497-4497  ViewRootImpl[Launcher]  net.oneplus.launcher                 D  windowFocusChanged hasFocus=false inTouchMode=true
+2026-07-14 10:02:24.470  4497-4497  Launcher                net.oneplus.launcher                 D  onWindowFocusChanged# hasFocus: false
+2026-07-14 10:02:24.482 19780-6503  AdvertisingIdClient     com.google.android.gms               D  AdvertisingIdClient already created.
+2026-07-14 10:02:24.482 19780-6503  AdvertisingIdClient     com.google.android.gms               D  AdvertisingIdClient is not bounded. Starting to bind it...
+2026-07-14 10:02:24.490  1634-1754  ExtBatteryStatsService  system_server                        D  @@@@ awaitUninterruptibly in 38 ms
+2026-07-14 10:02:24.491  1634-1754  MyBatteryStatsHelper    system_server                        D  ===processSingleAppUsage===
+2026-07-14 10:02:24.494  1634-1754  ExtBatteryStatsService  system_server                        D  ext-flush too soon, skip
+2026-07-14 10:02:24.494  1634-1754  MyBatteryStatsHelper    system_server                        D  ===processSingleAppUsage===
+2026-07-14 10:02:24.494 19780-6503  AdvertisingIdClient     com.google.android.gms               D  AdvertisingIdClient is bounded
+2026-07-14 10:02:24.497 19780-6503  AdvertisingIdClient     com.google.android.gms               I  shouldSendLog 1872099934
+2026-07-14 10:02:24.497 19780-6503  AdvertisingIdClient     com.google.android.gms               I  GetInfoInternal elapse 16ms
+2026-07-14 10:02:24.502  6209-6505  libguard                com.vkey.cloud.vkeyapp.sandbox       I  guard_hook_got_symbol: hooked 'dlopen' in 'libflutter.so' at 0x768c839e20
+2026-07-14 10:02:24.502  6209-6505  libguard                com.vkey.cloud.vkeyapp.sandbox       E  guard_hook_got_symbol: no JUMP_SLOT reloc for 'android_dlopen_ext' in 'libflutter.so'
+2026-07-14 10:02:24.502  6209-6505  libguard                com.vkey.cloud.vkeyapp.sandbox       I  guard_ctor: android_dlopen_ext not imported by libflutter.so (expected on most builds), skipping
+2026-07-14 10:02:24.502  6209-6505  libguard                com.vkey.cloud.vkeyapp.sandbox       I  guard_trampoline_apply_embedded_key: embedded key installed (no-Java/DT_NEEDED path)
+2026-07-14 10:02:24.502  6209-6505  libguard                com.vkey.cloud.vkeyapp.sandbox       I  guard_anti_instr_check: v1 stub, no-op (see README v2 plan)
+2026-07-14 10:02:24.505 19743-19743 BoundBrokerSvc          com.google.android.gms.persistent    D  onRebind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentApiService }
+2026-07-14 10:02:24.509 19743-19743 BoundBrokerSvc          com.google.android.gms.persistent    D  onRebind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentApiService }
+2026-07-14 10:02:24.510  6209-6209  libc                    com.vkey.cloud.vkeyapp.sandbox       E  Access denied finding property "ro.vendor.mediatek.platform"
+2026-07-14 10:02:24.516  6209-6209  vulkan                  com.vkey.cloud.vkeyapp.sandbox       D  searching for layers in '/data/app/~~U7Z_OcUCVb_Ua0ukRLqg3A==/com.vkey.cloud.vkeyapp.sandbox-2Lo1IsLtnuJAxN2d1yvbmA==/lib/arm64'
+2026-07-14 10:02:24.516  6209-6209  vulkan                  com.vkey.cloud.vkeyapp.sandbox       D  searching for layers in '/data/app/~~U7Z_OcUCVb_Ua0ukRLqg3A==/com.vkey.cloud.vkeyapp.sandbox-2Lo1IsLtnuJAxN2d1yvbmA==/base.apk!/lib/arm64-v8a'
+2026-07-14 10:02:24.520  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  ===== BEGIN DUMP OF OVERRIDDEN SETTINGS =====
+2026-07-14 10:02:24.520  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  ===== END DUMP OF OVERRIDDEN SETTINGS =====
+2026-07-14 10:02:24.520  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  QUALCOMM build          : 8e5405b, I57aaec3440
+                                                                                                    Build Date              : 05/21/21
+                                                                                                    Shader Compiler Version : EV031.32.02.10
+                                                                                                    Local Branch            : mybranchebba1dbe-451b-f160-ac81-1458d0b52ae8
+                                                                                                    Remote Branch           : quic/gfx-adreno.lnx.1.0.r135-rel
+                                                                                                    Remote Branch           : NONE
+                                                                                                    Reconstruct Branch      : NOTHING
+2026-07-14 10:02:24.520  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  Build Config            : S P 10.0.7 AArch64
+2026-07-14 10:02:24.520  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  Driver Path             : /vendor/lib64/hw/vulkan.adreno.so
+2026-07-14 10:02:24.533  6209-6209  libguard                com.vkey.cloud.vkeyapp.sandbox       I  finish_handle: intercepted dlopen('libapp.so'), decrypting 0 region(s)
+2026-07-14 10:02:24.533  6209-6209  libguard                com.vkey.cloud.vkeyapp.sandbox       W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-14 10:02:24.534  6209-6209  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) identical 1 line
+2026-07-14 10:02:24.534  6209-6209  libguard                com.vkey.cloud.vkeyapp.sandbox       W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-14 10:02:24.540  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-14 10:02:24.531  6209-6209  vkeyapp.sandbox         com.vkey.cloud.vkeyapp.sandbox       W  type=1400 audit(0.0:125284): avc: denied { read } for name="max_map_count" dev="proc" ino=4688103 scontext=u:r:untrusted_app:s0:c239,c261,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:24.540  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-14 10:02:24.543  1634-1645  chatty                  system_server                        I  uid=1000(system) FinalizerDaemon identical 2 lines
+2026-07-14 10:02:24.543  1634-1645  System                  system_server                        W  A resource failed to call close. 
+2026-07-14 10:02:24.545  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  QUALCOMM build          : 8e5405b, I57aaec3440
+                                                                                                    Build Date              : 05/21/21
+                                                                                                    Shader Compiler Version : EV031.32.02.10
+                                                                                                    Local Branch            : mybranchebba1dbe-451b-f160-ac81-1458d0b52ae8
+                                                                                                    Remote Branch           : quic/gfx-adreno.lnx.1.0.r135-rel
+                                                                                                    Remote Branch           : NONE
+                                                                                                    Reconstruct Branch      : NOTHING
+2026-07-14 10:02:24.546  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  Build Config            : S P 10.0.7 AArch64
+2026-07-14 10:02:24.546  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  Driver Path             : /vendor/lib64/hw/vulkan.adreno.so
+2026-07-14 10:02:24.547  4497-12724 RecentTasksList         net.oneplus.launcher                 D  loadTasksInBackground: getRecentTasks
+2026-07-14 10:02:24.549  2448-2448  EdgeBackGestureHandler  com.android.systemui                 D  updateTopPackage isHomeApp false
+2026-07-14 10:02:24.549  4497-12724 RecentTasksList         net.oneplus.launcher                 D  dumpTasks# id=3525, cmp=ComponentInfo{com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity}, uid=0, locked=false, isAppLocked=false;
+2026-07-14 10:02:24.552  6209-6209  flutter                 com.vkey.cloud.vkeyapp.sandbox       I  [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(60)] Using the Impeller rendering backend (Vulkan).
+2026-07-14 10:02:24.601  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.603  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.604  6209-6209  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       D  ********** V-Key Release SDK: V-OS Processor 4.10.7.0 (Apr  1 2026 15:59:35) **********
+2026-07-14 10:02:24.611  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log (metadata) LOG_LEVEL_INFO.
+2026-07-14 10:02:24.611  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log (metadata) LOG_LEVEL_INFO.
+2026-07-14 10:02:24.613  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log LOG_LEVEL_ERROR. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.669  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.669  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.675  6209-6209  OPFD_Manager            com.vkey.cloud.vkeyapp.sandbox       I  Dark? false, OP Force ? false
+2026-07-14 10:02:24.675  6209-6209  ViewRootImpl            com.vkey.cloud.vkeyapp.sandbox       V  The specified message queue synchronization  barrier token has not been posted or has already been removed
+2026-07-14 10:02:24.677  6209-6209  ViewRootImpl            com.vkey.cloud.vkeyapp.sandbox       D  support adaptive color gamut feature!
+2026-07-14 10:02:24.696  6209-6499  AdrenoGLES-0            com.vkey.cloud.vkeyapp.sandbox       I  QUALCOMM build                   : 8e5405b, I57aaec3440
+                                                                                                    Build Date                       : 05/21/21
+                                                                                                    OpenGL ES Shader Compiler Version: EV031.32.02.10
+                                                                                                    Local Branch                     : mybranchebba1dbe-451b-f160-ac81-1458d0b52ae8
+                                                                                                    Remote Branch                    : quic/gfx-adreno.lnx.1.0.r135-rel
+                                                                                                    Remote Branch                    : NONE
+                                                                                                    Reconstruct Branch               : NOTHING
+2026-07-14 10:02:24.696  6209-6499  AdrenoGLES-0            com.vkey.cloud.vkeyapp.sandbox       I  Build Config                     : S P 10.0.7 AArch64
+2026-07-14 10:02:24.696  6209-6499  AdrenoGLES-0            com.vkey.cloud.vkeyapp.sandbox       I  Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so
+2026-07-14 10:02:24.698  6209-6499  AdrenoGLES-0            com.vkey.cloud.vkeyapp.sandbox       I  PFP: 0x016ee190, ME: 0x00000000
+2026-07-14 10:02:24.701   606-606   hwservicemanager        hwservicemanager                     I  getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+2026-07-14 10:02:24.701  6209-6515  Gralloc4                com.vkey.cloud.vkeyapp.sandbox       I  mapper 4.x is not supported
+2026-07-14 10:02:24.701   606-606   hwservicemanager        hwservicemanager                     I  getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+2026-07-14 10:02:24.701  6209-6515  Gralloc3                com.vkey.cloud.vkeyapp.sandbox       W  mapper 3.x is not supported
+2026-07-14 10:02:24.702   606-606   hwservicemanager        hwservicemanager                     I  getTransport: Cannot find entry android.hardware.graphics.allocator@4.0::IAllocator/default in either framework or device manifest.
+2026-07-14 10:02:24.702  6209-6515  Gralloc4                com.vkey.cloud.vkeyapp.sandbox       W  allocator 3.x is not supported
+2026-07-14 10:02:24.702   606-606   hwservicemanager        hwservicemanager                     I  getTransport: Cannot find entry android.hardware.graphics.allocator@3.0::IAllocator/default in either framework or device manifest.
+2026-07-14 10:02:24.702  6209-6515  Gralloc3                com.vkey.cloud.vkeyapp.sandbox       W  allocator 3.x is not supported
+2026-07-14 10:02:24.727  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] AutoTurboBoostQuery fd<0 failed, errno=Inappropriate ioctl for device
+2026-07-14 10:02:24.727  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] AutoBoostConfigQuery fd<0 failed, errno=No such file or directory
+2026-07-14 10:02:24.728  1634-9143  ActivityTaskManager     system_server                        D  setRequestedOrientation() to 12 for ActivityRecord{e981bc6 u0 com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity t3525} from pid=6209, uid=11519
+2026-07-14 10:02:24.728  6209-6571  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.738  6209-6209  vkeyapp.sandbo          com.vkey.cloud.vkeyapp.sandbox       E  Invalid ID 0x00000002.
+2026-07-14 10:02:24.743  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] AutoTurboBoostQuery fd<0 failed, errno=Inappropriate ioctl for device
+2026-07-14 10:02:24.743  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] AutoBoostConfigQuery fd<0 failed, errno=No such file or directory
+2026-07-14 10:02:24.747  1634-1737  ActivityTaskManager     system_server                        E  createRemoteAnimationTarget Task{5534251 #1 visible=false type=home mode=fullscreen translucent=true I=net.oneplus.launcher/.Launcher U=0 StackId=1 sz=1} top most activity ActivityRecord{1a5865b u0 net.oneplus.launcher/.Launcher t3187}
+2026-07-14 10:02:24.748  1634-1737  ActivityTaskManager     system_server                        E  createRemoteAnimationTarget Task{4096b4 #3525 visible=true type=standard mode=fullscreen translucent=false A=11519:com.vkey.cloud.vkeyapp.sandbox U=0 StackId=3525 sz=1} top most activity ActivityRecord{e981bc6 u0 com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity t3525}
+2026-07-14 10:02:24.748  6209-6209  libguard                com.vkey.cloud.vkeyapp.sandbox       W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-14 10:02:24.749  6209-6209  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) identical 1 line
+2026-07-14 10:02:24.750  6209-6209  libguard                com.vkey.cloud.vkeyapp.sandbox       W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-14 10:02:24.750  4497-4522  LauncherAnimationRunner net.oneplus.launcher                 D  onAnimationStart#
+2026-07-14 10:02:24.751  6209-6209  libguard                com.vkey.cloud.vkeyapp.sandbox       W  finish_handle: repeat dlopen('libapp.so') observed, NOT re-decrypting (see g_libapp_handled comment)
+2026-07-14 10:02:24.751  4497-4497  StateManager            net.oneplus.launcher                 D  setAnimation# targetState: null, anim: 51062291
+2026-07-14 10:02:24.752  4497-4497  QuickstepTransition     net.oneplus.launcher                 D  [OSP-1899] getLauncherContentAnimator: isAppOpening= true, trans= 0.0, -131.0
+2026-07-14 10:02:24.752  4497-4497  BaseActivity            net.oneplus.launcher                 D  addForceInvisibleFlag add flag = 2, currentFlag = 2
+2026-07-14 10:02:24.752  4497-4497  BaseActivity            net.oneplus.launcher                 D  Showing call stack: 
+                                                                                                        [BaseActivity] QuickstepAppTransitionManagerImpl.java, onAnimationStart, line: 158
+2026-07-14 10:02:24.754  1634-1754  ArtManagerInternalImpl  system_server                        D  /data/misc/iorapd/com.vkey.cloud.vkeyapp.sandbox/4194574/com.example.vkey_voscloud_flutter.DevelopMainActivity/compiled_traces/compiled_trace.pb doesn't exist
+2026-07-14 10:02:24.755  1634-1866  ===> HoustonPackage     system_server                        I  addLaunchTimeInfo: for com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity isCold:true launchTime:329
+2026-07-14 10:02:24.755  1634-1866  322                     system_server                        I  com.vkey.cloud.vkeyapp.sandbox#-1#329
+2026-07-14 10:02:24.756  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  QUALCOMM build          : 8e5405b, I57aaec3440
+                                                                                                    Build Date              : 05/21/21
+                                                                                                    Shader Compiler Version : EV031.32.02.10
+                                                                                                    Local Branch            : mybranchebba1dbe-451b-f160-ac81-1458d0b52ae8
+                                                                                                    Remote Branch           : quic/gfx-adreno.lnx.1.0.r135-rel
+                                                                                                    Remote Branch           : NONE
+                                                                                                    Reconstruct Branch      : NOTHING
+2026-07-14 10:02:24.756  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  Build Config            : S P 10.0.7 AArch64
+2026-07-14 10:02:24.756  6209-6209  AdrenoVK-0              com.vkey.cloud.vkeyapp.sandbox       I  Driver Path             : /vendor/lib64/hw/vulkan.adreno.so
+2026-07-14 10:02:24.759  6209-6209  flutter                 com.vkey.cloud.vkeyapp.sandbox       I  [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(60)] Using the Impeller rendering backend (Vulkan).
+2026-07-14 10:02:24.759  1634-1754  ActivityTaskManager     system_server                        I  Displayed com.vkey.cloud.vkeyapp.sandbox/com.example.vkey_voscloud_flutter.DevelopMainActivity: +329ms
+2026-07-14 10:02:24.760  1094-16964 surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:24.771 19780-19780 ThreadPoolForeg         com.google.android.gms               W  type=1400 audit(0.0:125285): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=30309 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+2026-07-14 10:02:24.789  6209-6209  DecorView               com.vkey.cloud.vkeyapp.sandbox       D  onWindowFocusChangedFromViewRoot hasFocus: true, DecorView@b94e28a[DevelopMainActivity]
+2026-07-14 10:02:24.790  6209-6209  ViewRootIm...nActivity] com.vkey.cloud.vkeyapp.sandbox       D  windowFocusChanged hasFocus=true inTouchMode=true
+2026-07-14 10:02:24.790  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.791  6209-6238  vkeyapp.sandbo          com.vkey.cloud.vkeyapp.sandbox       I  Waiting for a blocking GC ProfileSaver
+2026-07-14 10:02:24.794  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:24.796  2448-2448  PhoneStatusBarView      com.android.systemui                 D  getCompatMode: mode:0 ops:3
+2026-07-14 10:02:24.796  2448-2448  PhoneStatusBarView      com.android.systemui                 I  isFullAndNotchEnabled() isFullMode=false pkg=com.vkey.cloud.vkeyapp.sandbox isCameraNotchIgnoreSetting=false, uid=11519
+2026-07-14 10:02:24.805  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.805  6209-6238  vkeyapp.sandbo          com.vkey.cloud.vkeyapp.sandbox       I  WaitForGcToComplete blocked ProfileSaver on ClassLinker for 14.291ms
+2026-07-14 10:02:24.806  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.808  2644-2644  GoogleInpu...hodService com...gle.android.inputmethod.latin  I  GoogleInputMethodService.onFinishInput():2276 
+2026-07-14 10:02:24.810  2644-2644  GoogleInpu...hodService com...gle.android.inputmethod.latin  I  GoogleInputMethodService.onStartInput():1460 onStartInput(EditorInfo{EditorInfo{packageName=com.vkey.cloud.vkeyapp.sandbox, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+2026-07-14 10:02:24.810  2644-613   Module                  com...gle.android.inputmethod.latin  I  DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():129 repeatCheckTimes = 0, locked = false
+2026-07-14 10:02:24.810  2644-2644  LatinIMEBase            com...gle.android.inputmethod.latin  I  LatinIMEBase.updateInputViewCoverNavigation():317 Update input view padding, isNavbarOverInputWindow=false, bottom inset=126
+2026-07-14 10:02:24.811  2644-597   Module                  com...gle.android.inputmethod.latin  I  DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():129 repeatCheckTimes = 1, locked = false
+2026-07-14 10:02:24.811  1094-16964 surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:24.813  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.815  6209-6542  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) pool-13-thread- identical 1 line
+2026-07-14 10:02:24.816  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.844  6209-6588  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.846  6209-6588  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.846  6209-6588  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.855  6209-6596  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.858  6209-6594  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.859  6209-6600  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.860  6209-6600  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) identical 2 lines
+2026-07-14 10:02:24.861  6209-6600  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.861  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.861  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.888  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       D  xpc
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x0
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       D  ********** V-Key Release: V-OS Firmware (PQR) Version 50.7.0.0 **********
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.890  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.891  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.891  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.907  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.907  6209-6607  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) vosThread identical 2 lines
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x0
+2026-07-14 10:02:24.908  6209-6607  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) vosThread identical 1 line
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x0
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) vosThread identical 5 lines
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x2
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x0
+2026-07-14 10:02:24.908  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x0
+2026-07-14 10:02:24.918  6209-6608  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.918  6209-6608  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.918  6209-6608  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log (metadata) LOG_LEVEL_INFO.
+2026-07-14 10:02:24.946  1634-1736  OemSceneMo...ivityStack system_server                        D  [scene] handleEvaluateGameMode enabled: false
+2026-07-14 10:02:24.946  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/system/rading_mode_status_auto
+2026-07-14 10:02:24.947  2375-2605  OIMC                    com.oneplus.coreservice              I  notified , mode ColorReadMode changeTo 2
+2026-07-14 10:02:24.947  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  handleMessage:   MODE_EXIT, arg1: 0, arg2: 0, obj: com.oneplus.server.oimc.gwy@e880315
+2026-07-14 10:02:24.947  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  The mode: ColorReadMode is not entered
+2026-07-14 10:02:24.947  2375-2605  OIMC                    com.oneplus.coreservice              I  notified , mode ReadMode changeTo 2
+2026-07-14 10:02:24.947  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  handleMessage:   MODE_EXIT, arg1: 0, arg2: 0, obj: com.oneplus.server.oimc.gwy@817e62a
+2026-07-14 10:02:24.947  2375-2421  OIMC_CORE               com.oneplus.coreservice              I  The mode: ReadMode is not entered
+2026-07-14 10:02:24.947  1634-1634  SettingsProvider        system_server                        V  Notifying for 0: content://settings/system/rading_mode_status_auto
+2026-07-14 10:02:24.952  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.952  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log (metadata) LOG_LEVEL_INFO.
+2026-07-14 10:02:24.956  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.957  6209-6631  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.957  6209-6631  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.957  6209-6631  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log (metadata) LOG_LEVEL_INFO.
+2026-07-14 10:02:24.958  6209-6607  V-OS.debug              com.vkey.cloud.vkeyapp.sandbox       E  Unknown syscall ID 0x1
+2026-07-14 10:02:24.960  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.960  6209-6607  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) vosThread identical 2 lines
+2026-07-14 10:02:24.961  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.961  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Accept log LOG_LEVEL_ERROR. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.961  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.961  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.961  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.961  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.966  6209-6636  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.970  6209-6636  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) Thread-21 identical 3 lines
+2026-07-14 10:02:24.970  6209-6636  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.970  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.970  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.974  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.977  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.984  6209-6607  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) vosThread identical 3 lines
+2026-07-14 10:02:24.990  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:24.991  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.997  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:24.997  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.000  6209-6607  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) identical 2 lines
+2026-07-14 10:02:25.000  6209-6607  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.000  6209-6643  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.001  6209-6643  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) pool-19-thread- identical 1 line
+2026-07-14 10:02:25.002  6209-6643  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.004  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:25.004  1634-2240  ConnectivityService     system_server                        D  NetReassign [no changes]
+2026-07-14 10:02:25.005  6209-6643  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.006  6209-6651  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.009  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:25.025  6209-6542  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) pool-13-thread- identical 2 lines
+2026-07-14 10:02:25.032  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:25.070  6209-6229  System                  com.vkey.cloud.vkeyapp.sandbox       W  A resource failed to call close. 
+2026-07-14 10:02:25.071  6209-6229  System                  com.vkey.cloud.vkeyapp.sandbox       W  A resource failed to call close. 
+2026-07-14 10:02:25.081  6209-6209  pool-34-thread-         com.vkey.cloud.vkeyapp.sandbox       W  type=1400 audit(0.0:125286): avc: denied { read } for name="cache" dev="dm-0" ino=16 scontext=u:r:untrusted_app:s0:c239,c261,c512,c768 tcontext=u:object_r:cache_file:s0 tclass=lnk_file permissive=0 app=com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:25.091  6661-6661  mount                   pid-6661                             W  type=1400 audit(0.0:125288): avc: denied { getattr } for path="/vendor/firmware_mnt" dev="sde32" ino=1 scontext=u:r:untrusted_app:s0:c239,c261,c512,c768 tcontext=u:object_r:firmware_file:s0 tclass=dir permissive=0 app=com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:25.116  4497-4497  StateManager            net.oneplus.launcher                 D  onAnimationEnd# set currentAnim to empty.
+2026-07-14 10:02:25.116  4497-4497  BaseActivity            net.oneplus.launcher                 D  clearForceInvisibleFlag add flag = 2, currentFlag = 0
+2026-07-14 10:02:25.116  4497-4497  BaseActivity            net.oneplus.launcher                 D  Showing call stack: 
+                                                                                                        [BaseActivity] QuickstepAppTransitionManagerImpl.java, onAnimationEnd, line: 164
+2026-07-14 10:02:25.130  1686-1844  QMI_FW                  qcrild                               E  qmi_cci_get_ref: ref count increased 2
+2026-07-14 10:02:25.141  4497-4497  Launcher                net.oneplus.launcher                 D  onStop# hashcode: 263018263
+2026-07-14 10:02:25.141  4497-4497  ShelfLauncherCallbacks  net.oneplus.launcher                 I  onStop
+2026-07-14 10:02:25.141  4497-4497  LauncherAppWidgetHost   net.oneplus.launcher                 D  setListenIfResumed# listenIfResumed: false, flag: 5
+2026-07-14 10:02:25.142  4497-4497  LauncherAppWidgetHost   net.oneplus.launcher                 D  stopListening# flag: 0
+2026-07-14 10:02:25.142  4497-4497  Launcher                net.oneplus.launcher                 D  onTrimMemory# level: 20
+2026-07-14 10:02:25.142  4497-4497  Launcher                net.oneplus.launcher                 D  onSaveInstanceState# hashcode: 263018263
+2026-07-14 10:02:25.142  4497-4497  ShelfLauncherCallbacks  net.oneplus.launcher                 I  onSaveInstanceState
+2026-07-14 10:02:25.143  4497-4497  Launcher                net.oneplus.launcher                 D  onTrimCachedBitmaps# state: ALL_APPS, trim: false
+2026-07-14 10:02:25.147  6209-6656  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.231  6209-6656  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) pool-34-thread- identical 3 lines
+2026-07-14 10:02:25.231  6209-6656  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.232  6209-6643  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.277  6209-6643  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) pool-19-thread- identical 5 lines
+2026-07-14 10:02:25.300  6209-6643  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.318  6209-6642  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:25.318  6209-6642  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:26.008  6209-6636  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:26.008  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:26.008  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.015  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.110  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:26.110  6209-6209  chatty                  com.vkey.cloud.vkeyapp.sandbox       I  uid=11519(com.vkey.cloud.vkeyapp.sandbox) identical 2 lines
+2026-07-14 10:02:26.110  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:26.110  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.113  1634-7709  ActivityTaskManager     system_server                        I  START u0 {flg=0x10000000 cmp=com.vkey.cloud.vkeyapp.sandbox/com.vkey.android.vguard.VGFullScreenDialogActivity (has extras)} from uid 11519 pid 6209
+2026-07-14 10:02:26.116  1634-7709  ActivityTrigger         system_server                        D  ActivityTrigger activityPauseTrigger 
+2026-07-14 10:02:26.118  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.122  1634-1754  ExtBatteryStatsService  system_server                        D  ext-flush too soon, skip
+2026-07-14 10:02:26.122  1634-1754  MyBatteryStatsHelper    system_server                        D  ===processSingleAppUsage===
+2026-07-14 10:02:26.123 19743-28548 FontLog                 com.google.android.gms.persistent    I  (REDACTED) Received query %s, URI %s
+2026-07-14 10:02:26.123 19743-28548 FontLog                 com.google.android.gms.persistent    I  (REDACTED) Query [%s] resolved to %s
+2026-07-14 10:02:26.124 19743-28548 FontLog                 com.google.android.gms.persistent    I  (REDACTED) Fetch %s end status %s
+2026-07-14 10:02:26.124 19743-6390  sqlite3_android         com.google.android.gms.persistent    E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.126  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.127  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.128 19743-28548 FontLog                 com.google.android.gms.persistent    I  (REDACTED) Pulling font file for id = %d, cache size = %d
+2026-07-14 10:02:26.131 19743-28548 FontLog                 com.google.android.gms.persistent    I  (REDACTED) Pulling font file for id = %d, cache size = %d
+2026-07-14 10:02:26.132  6209-6209  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Reject log LOG_LEVEL_INFO. Filter at LOG_LEVEL_ERROR
+2026-07-14 10:02:26.134  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-14 10:02:26.134  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.135  1634-1736  OpRestartProcessManager system_server                        D  updateSelf :  com.vkey.cloud.vkeyapp.sandbox, size : 30
+2026-07-14 10:02:26.135  1634-7709  ActivityTaskManager     system_server                        I  The Process com.vkey.cloud.vkeyapp.sandbox Already Exists in BG. So sending its PID: 6209
+2026-07-14 10:02:26.135  1634-7709  ActivityTaskManager     system_server                        W  Tried to set launchTime (0) < mLastActivityLaunchTime (166757160)
+2026-07-14 10:02:26.137  1634-7709  OpQuickReply            system_server                        D  setQuickReplyResumed focusedApp ActivityRecord{d9cdbf4 u0 com.vkey.cloud.vkeyapp.sandbox/com.vkey.android.vguard.VGFullScreenDialogActivity t3525} pkgName com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:26.140  1634-1736  OpRestartProcessManager system_server                        D  Duration is too short, ignore : 0 in com.vkey.cloud.vkeyapp.sandbox
+2026-07-14 10:02:26.140  1634-1736  OpPowerCon...tsInjector system_server                        D  notifyPkgEvent
+2026-07-14 10:02:26.140  6209-6542  sqlite3_android         com.vkey.cloud.vkeyapp.sandbox       E  [IKR-38846] ONEPLUS_NAME_PARTS_MATCH SQLITE_OK
+2026-07-14 10:02:26.142  1094-16964 surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.150  1094-5750  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.156  1094-1157  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.173  1094-16964 surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.195  6209-6209  ViewRootImpl            com.vkey.cloud.vkeyapp.sandbox       D  support adaptive color gamut feature!
+2026-07-14 10:02:26.199  6209-6209  ViewRootIm...nActivity] com.vkey.cloud.vkeyapp.sandbox       D  windowFocusChanged hasFocus=false inTouchMode=true
+2026-07-14 10:02:26.202  1094-1157  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.219  1094-16964 surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.232  6209-6209  vkeyapp.sandbo          com.vkey.cloud.vkeyapp.sandbox       E  Invalid ID 0x00000003.
+2026-07-14 10:02:26.239  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] AutoTurboBoostQuery fd<0 failed, errno=Inappropriate ioctl for device
+2026-07-14 10:02:26.239  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] AutoBoostConfigQuery fd<0 failed, errno=No such file or directory
+2026-07-14 10:02:26.242  1094-1369  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.247  1634-1866  ===> HoustonPackage     system_server                        I  addLaunchTimeInfo: for com.vkey.cloud.vkeyapp.sandbox/com.vkey.android.vguard.VGFullScreenDialogActivity isCold:false launchTime:133
+2026-07-14 10:02:26.247  1634-1866  322                     system_server                        I  com.vkey.cloud.vkeyapp.sandbox#-1#133
+2026-07-14 10:02:26.247  1634-1754  ActivityTaskManager     system_server                        I  Displayed com.vkey.cloud.vkeyapp.sandbox/com.vkey.android.vguard.VGFullScreenDialogActivity: +133ms
+2026-07-14 10:02:26.252  6209-6209  DecorView               com.vkey.cloud.vkeyapp.sandbox       D  onWindowFocusChangedFromViewRoot hasFocus: true, DecorView@148b9ed[VGFullScreenDialogActivity]
+2026-07-14 10:02:26.253  6209-6209  ViewRootIm...gActivity] com.vkey.cloud.vkeyapp.sandbox       D  windowFocusChanged hasFocus=true inTouchMode=true
+2026-07-14 10:02:26.256  2644-2644  GoogleInpu...hodService com...gle.android.inputmethod.latin  I  GoogleInputMethodService.onFinishInput():2276 
+2026-07-14 10:02:26.257  2644-678   Module                  com...gle.android.inputmethod.latin  I  DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():129 repeatCheckTimes = 0, locked = false
+2026-07-14 10:02:26.257  2644-2644  GoogleInpu...hodService com...gle.android.inputmethod.latin  I  GoogleInputMethodService.onStartInput():1460 onStartInput(EditorInfo{EditorInfo{packageName=com.vkey.cloud.vkeyapp.sandbox, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+2026-07-14 10:02:26.257  2644-2644  LatinIMEBase            com...gle.android.inputmethod.latin  I  LatinIMEBase.updateInputViewCoverNavigation():317 Update input view padding, isNavbarOverInputWindow=false, bottom inset=126
+2026-07-14 10:02:26.258  2644-6136  Module                  com...gle.android.inputmethod.latin  I  DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():129 repeatCheckTimes = 1, locked = false
+2026-07-14 10:02:26.286  1094-6679  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.287  1094-16964 surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:26.305  6209-6559  LogManager              com.vkey.cloud.vkeyapp.sandbox       I  Netcom Get() output {"mode":"basic","log_level":"INFO"}dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+2026-07-14 10:02:26.305  6209-6559  LogManager              com.vkey.cloud.vkeyapp.sandbox       I  Switch from LOG_LEVEL_ERROR to LOG_LEVEL_INFO
+2026-07-14 10:02:26.305  6209-6559  Logger                  com.vkey.cloud.vkeyapp.sandbox       I  Log level switch to LOG_LEVEL_INFO
+2026-07-14 10:02:26.460  4497-6498  FA                      net.oneplus.launcher                 I  Application backgrounded at: timestamp_millis: 1783998144460
+2026-07-14 10:02:26.679  6209-6559  LogManager              com.vkey.cloud.vkeyapp.sandbox       I  Netcom Post() runsync upload vslog-2026-07-14T02-59-37+0000.log
+2026-07-14 10:02:27.075  6209-6559  LogManager              com.vkey.cloud.vkeyapp.sandbox       I  Netcom Post() force sync upload vslog-2026-07-14T03-02-24+0000.log
+2026-07-14 10:02:27.202  1634-1757  BatteryStatsImpl        system_server                        I  set timeToFullsIndexMax = 3
+2026-07-14 10:02:27.211  1634-1754  AlarmManager            system_server                        W  Unrecognized alarm listener com.android.server.OpPowerControllerService$tsu@29945c4
+2026-07-14 10:02:27.216  3022-3022  QtiCarrierConfigHelper  org.codeaurora.ims                   D  WARNING, no carrier configs on phone Id: 0
+2026-07-14 10:02:27.218  2448-2448  KeyguardUpdateMonitor   com.android.systemui                 D  received broadcast android.intent.action.BATTERY_CHANGED
+2026-07-14 10:02:27.218  2448-2448  OpUtils                 com.android.systemui                 I  isSupportWarpCharging:false
+2026-07-14 10:02:27.218  2448-2448  KeyguardUpdateMonitor   com.android.systemui                 D  pdCharge false, chargingstatus 0, fastcharge:0
+2026-07-14 10:02:27.218  2448-2448  OpUtils                 com.android.systemui                 I  isSupportWarpCharging:false
+2026-07-14 10:02:27.218  2448-2448  OpSWarpChargingView     com.android.systemui                 D  level is same as latest one [85]
+2026-07-14 10:02:27.255  3069-3069  DeviceStatisticsService com...m.qti.devicestatisticsservice  D  chargerType=2 batteryLevel=85 totalBatteryCapacity=2787500
+2026-07-14 10:02:27.361 19743-19743 ThreadPoolForeg         com.google.android.gms.persistent    W  type=1400 audit(0.0:125403): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=30309 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+2026-07-14 10:02:27.811  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:27.875  1094-6679  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:27.876  1094-1158  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:27.975  1094-6679  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:27.976  1094-1157  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:28.092  1094-6679  surfaceflinger          surfaceflinger                       E  [frame_perf] perfboost open boost file failed
+2026-07-14 10:02:28.216  2448-2448  NavigationHandle        com.android.systemui                 D  triggerChangeColorAnimation
+2026-07-14 10:02:28.216  2448-2448  NavigationHandle        com.android.systemui                 D  current color is match top app. no need to change color
