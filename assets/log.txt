@@ -1,32 +1,134 @@
-❯ packer/tools/pack_existing_apk.sh \       
-  --input-apk assets/vsa.apk \
-  --android-jar /Users/tri.le/Library/Android/sdk/platforms/android-29/android.jar \
-  --keystore test.jks --key-alias testkey --keystore-pass-env KS_PASS
-
+❯ packer/tools/pack_existing_apk.sh \
+  --input-apk assets/Flappy-Bird.apk \
+  --keystore test.jks --key-alias testkey --keystore-pass-env KS_PASS \
+  --inject-mode dt-needed  
 == [1/8] extracting APK ==
 == [2/8] obfuscation check (best-effort, no source available) ==
-  [arm64-v8a] 'package:' occurrences in libapp.so: 1323
+  [arm64-v8a] 'package:' occurrences in libapp.so: 639
   (no --dart-package-name given: this counts ALL package: strings, including
    the Flutter framework's own, which are numerous even in obfuscated builds --
    treat this as informational, not a pass/fail gate. Pass --dart-package-name
    if you know it, for a real gate.)
-  [armeabi-v7a] 'package:' occurrences in libapp.so: 1320
+  [armeabi-v7a] 'package:' occurrences in libapp.so: 639
   (no --dart-package-name given: this counts ALL package: strings, including
    the Flutter framework's own, which are numerous even in obfuscated builds --
    treat this as informational, not a pass/fail gate. Pass --dart-package-name
    if you know it, for a real gate.)
-  [x86_64] 'package:' occurrences in libapp.so: 1323
+  [x86_64] 'package:' occurrences in libapp.so: 639
   (no --dart-package-name given: this counts ALL package: strings, including
    the Flutter framework's own, which are numerous even in obfuscated builds --
    treat this as informational, not a pass/fail gate. Pass --dart-package-name
    if you know it, for a real gate.)
-== [3/8] checking existing Application class ==
-  current android:name = ertil.skauf
-FATAL: this app already declares a custom Application class (ertil.skauf).
-       Overwriting it with GuardApplication would silently DISCARD whatever that
-       class does -- this tool only injects a hook, it does not merge logic into
-       an existing class. Re-run with --force-application-overwrite only if
-       you've confirmed losing that class's behavior is acceptable, or extend
-       axml_patch.py's approach to patch the *existing* class's smali instead
-       (see docs/GUIDE.md and packer/README.md for the tradeoffs).
-(leaving work dir for inspection: /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6cYopZ)
+== [3/8] checking existing Application class == (skipped: this mode touches no Java/manifest)
+== [4/8] patching manifest + injecting guard dex == (skipped: dt-needed uses no Java)
+== [5/8] key material ==
+  dt-needed: AES key generated + embedded into libguard.so (no runtime cert derivation)
+== [6/8] encrypt_snapshot.py + libguard.so ==
+[key] source=--key-hex  key-fp=554a334c  embed=True
+[arm64-v8a] /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/apk/lib/arm64-v8a/libapp.so
+readelf not found on PATH; falling back to the built-in ELF parser (_MiniElf).
+  encrypted _kDartVmSnapshotInstructions: vaddr=0x1e0000 file_off=0x1e0000 size=18416
+  encrypted _kDartIsolateSnapshotInstructions: vaddr=0x1e47f0 file_off=0x1e47f0 size=3241232
+[armeabi-v7a] /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/apk/lib/armeabi-v7a/libapp.so
+  encrypted _kDartVmSnapshotInstructions: vaddr=0x230000 file_off=0x230000 size=15304
+  encrypted _kDartIsolateSnapshotInstructions: vaddr=0x233bd0 file_off=0x233bd0 size=3530232
+[x86_64] /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/apk/lib/x86_64/libapp.so
+  encrypted _kDartVmSnapshotInstructions: vaddr=0x1dc000 file_off=0x1dc000 size=15984
+  encrypted _kDartIsolateSnapshotInstructions: vaddr=0x1dfe70 file_off=0x1dfe70 size=3220192
+wrote /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/regions.h
+  -- arm64-v8a --
+-- The C compiler identification is Clang 19.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Users/tri.le/Library/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/build/packed/work.6dqnSX/cmake-build-arm64-v8a
+[3/7] Building C object CMakeFiles/guard.dir/src/crypto.c.o
+In file included from /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/crypto.c:5:
+/Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.h:27:9: warning: 'AES128' macro redefined [-Wmacro-redefined]
+   27 | #define AES128 1
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define AES128 0
+      |         ^
+1 warning generated.
+[4/7] Building C object CMakeFiles/guard.dir/src/third_party/aes.c.o
+In file included from /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.c:39:
+/Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.h:27:9: warning: 'AES128' macro redefined [-Wmacro-redefined]
+   27 | #define AES128 1
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define AES128 0
+      |         ^
+1 warning generated.
+[7/7] Linking C shared library libguard.so
+  -- armeabi-v7a --
+-- The C compiler identification is Clang 19.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Users/tri.le/Library/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/build/packed/work.6dqnSX/cmake-build-armeabi-v7a
+[5/7] Building C object CMakeFiles/guard.dir/src/crypto.c.o
+In file included from /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/crypto.c:5:
+/Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.h:27:9: warning: 'AES128' macro redefined [-Wmacro-redefined]
+   27 | #define AES128 1
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define AES128 0
+      |         ^
+1 warning generated.
+[6/7] Building C object CMakeFiles/guard.dir/src/third_party/aes.c.o
+In file included from /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.c:39:
+/Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.h:27:9: warning: 'AES128' macro redefined [-Wmacro-redefined]
+   27 | #define AES128 1
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define AES128 0
+      |         ^
+1 warning generated.
+[7/7] Linking C shared library libguard.so
+  -- x86_64 --
+-- The C compiler identification is Clang 19.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Users/tri.le/Library/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/build/packed/work.6dqnSX/cmake-build-x86_64
+[4/7] Building C object CMakeFiles/guard.dir/src/crypto.c.o
+In file included from /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/crypto.c:5:
+/Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.h:27:9: warning: 'AES128' macro redefined [-Wmacro-redefined]
+   27 | #define AES128 1
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define AES128 0
+      |         ^
+1 warning generated.
+[6/7] Building C object CMakeFiles/guard.dir/src/third_party/aes.c.o
+In file included from /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.c:39:
+/Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/native/libguard/src/third_party/aes.h:27:9: warning: 'AES128' macro redefined [-Wmacro-redefined]
+   27 | #define AES128 1
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define AES128 0
+      |         ^
+1 warning generated.
+[7/7] Linking C shared library libguard.so
+== [6b] patching libflutter.so DT_NEEDED -> libguard.so ==
+wrote /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/apk/lib/arm64-v8a/libflutter.so: added DT_NEEDED 'libguard.so' (8 -> 
+9 deps)
+wrote /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/apk/lib/armeabi-v7a/libflutter.so: added DT_NEEDED 'libguard.so' (8 -
+> 9 deps)
+wrote /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX/apk/lib/x86_64/libflutter.so: added DT_NEEDED 'libguard.so' (8 -> 9 d
+eps)
+== [7/8] repack + zipalign ==
+(leaving work dir for inspection: /Users/tri.le/src/opensource/lambertse/flutter-obfuscation/packer/../build/packed/work.6dqnSX)
