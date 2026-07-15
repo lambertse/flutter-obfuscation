@@ -33,11 +33,13 @@ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/regions.h")
 endif()
 
 add_library(guard SHARED
-  src/guard.c
-  src/got_hook.c
-  src/trampoline.c
-  src/crypto.c
-  src/anti_instr.c
+  src/guard.c              # constructor + trigger selection + JNI key hand-off
+  src/got_hook.c           # core: PLT/GOT hooking
+  src/dlopen_hook.c        # trigger: Flutter libapp.so (v1)
+  src/memops.c             # core: reusable decrypt engine (mprotect/anon-remap)
+  src/key.c                # core: AES key storage
+  src/crypto.c             # core: AES-256-CTR
+  src/anti_instr.c         # core: anti-instrumentation stub (v1 no-op)
   src/third_party/aes.c
 )
 

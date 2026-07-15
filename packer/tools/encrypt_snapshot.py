@@ -9,7 +9,7 @@ For each ABI's freshly-built (and --obfuscate'd) libapp.so, this:
   2. AES-256-CTR encrypts those byte ranges in place, byte-identical
      length (CTR is a stream cipher, no padding, no ELF layout change).
   3. Emits regions.h: a per-ABI, dlsym-name-keyed table (symbol name, size,
-     nonce, exec flag) that native/libguard/src/trampoline.c compiles in and
+     nonce, exec flag) that native/libguard/src/dlopen_hook.c compiles in and
      uses at runtime to find + decrypt the same ranges. Addresses are never
      baked in -- the runtime re-resolves them via dlsym() against the
      freshly dlopen()'d handle.
@@ -33,7 +33,7 @@ from pathlib import Path
 # instructions-only for v1, architecture kept extensible).
 #
 # Flipping ENCRYPT_DATA_REGIONS to True requires ZERO changes on the native
-# side -- trampoline.c just iterates whatever regions.h contains (see
+# side -- dlopen_hook.c just iterates whatever regions.h contains (see
 # native/libguard/src/region_table.h). It only affects this build step.
 #
 # What each toggle actually protects, so this isn't a black box:
@@ -68,7 +68,7 @@ AES_KEY_LEN = 32  # AES-256, must match native/libguard/src/crypto.h GUARD_AES_K
 # ABI name -> the C preprocessor guard region_table.h's generated regions.h
 # uses to select the right table at compile time (one CMake build = one ABI
 # = exactly one branch compiled in). Must match native/libguard/src/got_hook.c's
-# GUARD_JUMP_SLOT arch dispatch and trampoline.c's compile-time selection.
+# GUARD_JUMP_SLOT arch dispatch and dlopen_hook.c's compile-time selection.
 ABI_TO_CPP_GUARD = {
     "arm64-v8a": "defined(__aarch64__)",
     "armeabi-v7a": "defined(__arm__)",
@@ -380,7 +380,7 @@ def render_regions_h(per_abi_regions: dict, embedded_key: bytes = None) -> str:
     lines.append("")
     # The AES key is ABI-independent (one key, per-region/-ABI nonces), so it
     # lives outside the per-ABI #if. guard.c's constructor applies it when
-    # GUARD_HAVE_EMBEDDED_KEY is 1 -- see trampoline.c guard_trampoline_apply_embedded_key().
+    # GUARD_HAVE_EMBEDDED_KEY is 1 -- see dlopen_hook.c apply_embedded_key().
     if embedded_key is not None:
         assert len(embedded_key) == AES_KEY_LEN
         lines.append("#define GUARD_HAVE_EMBEDDED_KEY 1")
