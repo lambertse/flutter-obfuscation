@@ -227,6 +227,21 @@ ZIPALIGN="$ANDROID_BUILD_TOOLS/zipalign"
 APKSIGNER="$ANDROID_BUILD_TOOLS/apksigner"
 D8="$ANDROID_BUILD_TOOLS/d8"
 [[ -x "$ZIPALIGN" ]] || { echo "FATAL: zipalign not found at $ZIPALIGN" >&2; exit 1; }
+
+# build-tools < 34 ships a zipalign that does not 4KB-page-align stored .so via
+# -p: it aligns them to 4 instead of 4096, so step 7 fails with '(BAD - <n>)'
+# on every lib and "Verification FAILED" (confirmed broken on 29.0.2). Page
+# alignment is mandatory here -- the packed libapp.so/libguard.so must be
+# directly mmap'able. Fail fast now rather than after the whole compile+encrypt
+# pipeline. The build-tools dir is conventionally named by version.
+BT_VER="$(basename "$ANDROID_BUILD_TOOLS")"
+BT_MAJOR="${BT_VER%%.*}"
+if [[ "$BT_MAJOR" =~ ^[0-9]+$ ]] && (( BT_MAJOR < 34 )); then
+  echo "FATAL: build-tools $BT_VER is too old -- its zipalign does not 4KB-page-align" >&2
+  echo "       stored .so via -p, which this packer requires. Point ANDROID_BUILD_TOOLS" >&2
+  echo "       at build-tools >= 34 (e.g. \$ANDROID_HOME/build-tools/35.0.0)." >&2
+  exit 1
+fi
 [[ -x "$APKSIGNER" ]] || { echo "FATAL: apksigner not found at $APKSIGNER" >&2; exit 1; }
 [[ "$STAGE_JAVA_INJECT" != "1" ]] || [[ -x "$D8" ]] || { echo "FATAL: d8 not found at $D8" >&2; exit 1; }
 
@@ -427,7 +442,19 @@ fi
 
 ( cd "$EXTRACT_DIR" && zip -X -q -0 "$UNSIGNED_APK" "${REPACK_STORED[@]}" )
 
-"$ZIPALIGN" -v -p 4 "$UNSIGNED_APK" "$ALIGNED_APK" >/dev/null
+# NOTE: zipalign writes its per-entry report AND its errors to STDOUT, not
+# stderr. Do NOT redirect this to /dev/null -- doing so silently swallows a
+# "Verification FAILED" and leaves a blank log after this step. Capture it and
+# surface it on failure instead.
+if ! "$ZIPALIGN" -f -v -p 4 "$UNSIGNED_APK" "$ALIGNED_APK" >"$WORK_DIR/zipalign.log" 2>&1; then
+  echo "FATAL: zipalign failed. Its output:" >&2
+  sed 's/^/  zipalign: /' "$WORK_DIR/zipalign.log" >&2
+  echo "       If the failures are '(BAD - <n>)' on lib/*/*.so with <n> a multiple of 4" >&2
+  echo "       (not 4096), your zipalign is not 4KB-page-aligning stored .so via -p." >&2
+  echo "       This is an OLD build-tools zipalign (seen on 29.0.2); point" >&2
+  echo "       ANDROID_BUILD_TOOLS at build-tools >= 34 and re-run." >&2
+  exit 1
+fi
 
 # ---------------------------------------------------------------------------
 # 8. Sign + verify

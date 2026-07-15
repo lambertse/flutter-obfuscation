@@ -38,6 +38,118 @@ encryption pointless against anyone past the laziest attacker) — but it is
 You can and should test the mechanism first without it (Path A below), and
 only add `--obfuscate` when you move toward a real release build (Path B).
 
+## How it works (the mechanism, in plain terms)
+
+The whole tool rests on one interception point. Here is the entire idea,
+start to finish.
+
+### 1. The snapshot, and why we can hide it
+
+A released Flutter app's compiled Dart code (the "AOT snapshot") lives in
+`lib/<abi>/libapp.so`, in two executable regions named
+`_kDartVmSnapshotInstructions` and `_kDartIsolateSnapshotInstructions`. At
+build time we **AES-256-CTR encrypt exactly those two regions in place** —
+same file, same size (CTR is a stream cipher, so no layout changes), just
+ciphertext where the code used to be. Anyone who unzips the shipped APK and
+runs `strings` or a Dart snapshot parser on `libapp.so` now sees noise.
+
+The catch: the app still has to *run*. So the code has to become plaintext
+again in memory, at exactly the right moment, without the Flutter engine
+noticing. That is what the runtime half does.
+
+### 2. What we hook — `dlopen`, via the GOT
+
+The Flutter engine (`libflutter.so`) loads the Dart code by calling the
+standard C function **`dlopen("libapp.so")`**, and only *afterwards* reads
+the snapshot symbols out of the handle it gets back. That call is our
+interception point:
+
+> We replace `libflutter.so`'s `dlopen` with our own function. Ours calls
+> the real `dlopen` (so `libapp.so` loads normally), then **decrypts the two
+> instruction regions in memory**, then returns the handle. The engine reads
+> the now-plaintext snapshot and runs, none the wiser.
+
+"Replace its `dlopen`" means a **GOT hook**. Every native library has a
+*Global Offset Table*: a table of function pointers the linker fills in with
+the real addresses of the external functions that library calls (`dlopen`,
+`malloc`, …). We don't rewrite any code — we just overwrite the single
+pointer in `libflutter.so`'s GOT that says "`dlopen` lives here" so it
+points at our function instead. Flipping one pointer is surgical and
+reversible; rewriting instructions would not be. (Our hook only fires for
+`libapp.so`; any other `dlopen` call is passed straight through untouched.)
+
+The decrypt itself has one wrinkle worth knowing: on modern enforcing-SELinux
+devices you may not take a *file-backed* page (like `libapp.so` mapped from
+the APK), write to it, and mark it executable again — the "W^X" / `execmod`
+rule. So the hook decrypts into a scratch buffer and swaps the page for a
+fresh **anonymous** copy at the *same address* before running it. Same
+address means every internal reference in the code still resolves; anonymous
+memory isn't file-backed, so the `execmod` rule doesn't apply.
+
+### 3. Getting our hook to run in time — the injection problem
+
+Our hook lives in a small native library, **`libguard.so`**. For it to work,
+two things must happen *before* the engine calls `dlopen("libapp.so")`:
+`libguard.so` must be loaded (so its constructor installs the GOT hook), and
+the AES key must be set. A `.so` doesn't load itself — something has to
+trigger it. That "something" is the *only* reason the tool has to touch the
+app at all, and there are two ways to do it (`--inject-mode`):
+
+- **`application` (default).** Register a tiny `Application` subclass
+  (`GuardApplication`) by rewriting `<application android:name>` in the
+  manifest and injecting a dex. Its `onCreate` loads `libguard.so` and
+  derives the key. Simple — but it **replaces** the app's own `Application`
+  class, so it breaks any app that already has one.
+
+- **`dt-needed`.** No Java, no manifest, no dex. Explained next.
+
+### 4. What `DT_NEEDED` is, and why we add one
+
+Every native library carries a list of *other* libraries it depends on. Each
+entry in that list is a `DT_NEEDED` record inside the ELF file's "dynamic"
+section — e.g. `libflutter.so` already declares `DT_NEEDED` on `libc.so`,
+`liblog.so`, and so on. The rule the Android loader follows is the useful
+part:
+
+> When the loader loads a library, it first loads everything in that
+> library's `DT_NEEDED` list **and runs their constructors**, before the
+> depending library finishes loading.
+
+So in `dt-needed` mode we **add one `DT_NEEDED` entry — `libguard.so` — to
+the app's own `libflutter.so`** (with the tool [`patch_libflutter_needed.py`](../packer/tools/patch_libflutter_needed.py),
+using LIEF). The consequence is exactly the timing we need, for free:
+
+```
+engine wants Dart  →  loader loads libflutter.so
+                        →  sees DT_NEEDED libguard.so  →  loads it FIRST,
+                           runs its constructor  →  GOT hook installed + key set
+                        →  libflutter.so finishes loading
+   ... later ...       →  engine calls dlopen("libapp.so")  →  our hook fires  →  decrypt
+```
+
+Because this touches **no** Java, manifest, or dex, it leaves the app's own
+`Application` class — and anything it bootstraps, such as a RASP/anti-tamper
+SDK — completely undisturbed. That's the whole reason it exists: it's the
+injection method for apps you can't safely modify at the Java layer. The AES
+key is baked into `libguard.so` at build time (there's no Java side to derive
+it); since the signing cert it would otherwise derive from is public in the
+APK anyway, that trade-off costs no real secrecy. The one cost is that we
+modify `libflutter.so` itself (a single added dependency entry).
+
+### 5. Scope — what the packer changes in your APK
+
+| Mode | Modifies | Leaves untouched |
+|---|---|---|
+| both | `lib/<abi>/libapp.so` (2 regions encrypted), adds `lib/<abi>/libguard.so`, re-signs | your Dart logic, resources, assets |
+| `application` | `AndroidManifest.xml` (`android:name`), adds a dex | `libflutter.so`, the app's other classes |
+| `dt-needed` | `lib/<abi>/libflutter.so` (one `DT_NEEDED` entry) | the manifest, all dex, the app's `Application` class / RASP |
+
+Out of scope entirely: defending the decrypted-in-memory window (a live
+memory dump still works — see "What this is" above), and any app whose own
+RASP verifies the *bytes* of `libapp.so` at runtime (it would reject the
+encryption regardless of how cleanly we inject — see `packer/README.md`
+limitation #10).
+
 ## Which path applies to you
 
 - **You only have a built `.apk`, no Flutter/Android project source.**
@@ -150,11 +262,12 @@ whether the app actually *launches* is unproven until you run it.
 
 ## Path A-DT — apps with a custom Application class (`--inject-mode dt-needed`)
 
-Path A's default injection retargets `<application android:name>` to our
-`GuardApplication`. That **replaces** the app's own Application class, so it
-breaks any app that already declares one — including apps that bootstrap a
-RASP/anti-tamper SDK (e.g. V-Key V-OS) from it. For those, use the
-no-Java injection instead:
+The default `application` mode replaces the app's own `Application` class,
+which breaks any app that already declares one (including apps that
+bootstrap a RASP SDK like V-Key V-OS from it). For those, the `dt-needed`
+mode injects the hook with no Java at all — see ["How it works" §3–4](#4-what-dt_needed-is-and-why-we-add-one)
+for what it does and why. Requires `pip install lief` (see
+`requirements.txt`). Usage:
 
 ```bash
 packer/tools/pack_existing_apk.sh \
@@ -163,13 +276,6 @@ packer/tools/pack_existing_apk.sh \
   --abis arm64-v8a \
   --inject-mode dt-needed
 ```
-
-Instead of touching any Java, this adds `libguard.so` as a **`DT_NEEDED`
-dependency of the app's own `libflutter.so`** (via `lief`) and **bakes the
-AES key into `libguard.so`**. Loading the engine then auto-loads our hook
-before it ever opens `libapp.so` — no Application, no manifest, no dex
-changed, so the app's own startup (and any RASP it bootstraps) is
-undisturbed. Requires `pip install lief` (see `requirements.txt`).
 
 **Run the mechanism test first.** Before a full encrypted build, prove the
 injection works on your device with the *encryption turned off*:
@@ -191,11 +297,6 @@ adb logcat | grep -iE 'libguard|DEBUG'
   lib besides `libapp.so` it modifies). Capture the `libguard`/`DEBUG`
   logcat lines; the fallback is a ContentProvider injection (doesn't touch
   `libflutter.so`), or `--inject-mode application` on a non-RASP app.
-
-The embedded key is deliberately baked into `libguard.so` (not derived from
-the signing cert): on this path there's no `GuardBridge` to derive it, and
-the cert is public inside the APK anyway, so cert-derivation added no real
-secrecy — see `packer/README.md` limitation #10.
 
 ## Path B — you have Flutter project source
 
